@@ -1,0 +1,72 @@
+body {
+    background-color: black;
+    color: wheat;
+    margin: 0 auto;
+}
+
+.main-grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    height: calc(100dvh - 18px);
+    width: calc(100dvh - 18px);
+    margin: 0 auto;
+    /* border: 2px solid white; */
+    margin-top: 6px;
+}
+
+.main-grid-cell {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.border-right {
+    border-right: solid;
+}
+
+.border-bottom {
+    border-bottom: solid;
+}
+
+.main-grid-cell.border-right {
+    border-right-width: 4px;
+}
+
+.main-grid-cell.border-bottom {
+    border-bottom-width: 4px;
+}
+
+.small-grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    height: 95%;
+    width: 95%;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 6px;
+}
+
+.small-grid-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.small-grid-cell.border-right {
+    border-right-width: 2px;
+}
+
+.small-grid-cell.border-bottom {
+    border-bottom-width: 2px;
+}
+
+/* TODO: The below CSS works only for fullscreen laptop, not responsive, look into this later */
+.overlay-small-board {
+    position: absolute;
+    z-index: 100;
+    font-size: 200px;
+    left: 22%;
+    top: 3%;
+}
