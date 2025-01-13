@@ -1,18 +1,56 @@
 import SmallBoard from "./SmallBoard";
+import { useState } from "react";
 
 export default function MainBoard() {
+  const [currentMarkerToPlace, setCurrentMarkerToPlace] = useState("X");
   return (
     <>
       <div className="main-grid-container">
-        <SmallBoard number={1}></SmallBoard>
-        <SmallBoard number={2}></SmallBoard>
-        <SmallBoard number={3}></SmallBoard>
-        <SmallBoard number={4}></SmallBoard>
-        <SmallBoard number={5}></SmallBoard>
-        <SmallBoard number={6}></SmallBoard>
-        <SmallBoard number={7}></SmallBoard>
-        <SmallBoard number={8}></SmallBoard>
-        <SmallBoard number={9}></SmallBoard>
+        <SmallBoard
+          number={1}
+          currentMarkerToPlace={currentMarkerToPlace}
+          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
+        ></SmallBoard>
+        <SmallBoard
+          number={2}
+          currentMarkerToPlace={currentMarkerToPlace}
+          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
+        ></SmallBoard>
+        <SmallBoard
+          number={3}
+          currentMarkerToPlace={currentMarkerToPlace}
+          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
+        ></SmallBoard>
+        <SmallBoard
+          number={4}
+          currentMarkerToPlace={currentMarkerToPlace}
+          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
+        ></SmallBoard>
+        <SmallBoard
+          number={5}
+          currentMarkerToPlace={currentMarkerToPlace}
+          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
+        ></SmallBoard>
+        <SmallBoard
+          number={6}
+          currentMarkerToPlace={currentMarkerToPlace}
+          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
+        ></SmallBoard>
+        <SmallBoard
+          number={7}
+          currentMarkerToPlace={currentMarkerToPlace}
+          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
+        ></SmallBoard>
+        <SmallBoard
+          number={8}
+          currentMarkerToPlace={currentMarkerToPlace}
+          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
+        ></SmallBoard>
+        <SmallBoard
+          number={9}
+          currentMarkerToPlace={currentMarkerToPlace}
+          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
+        ></SmallBoard>
       </div>
     </>
   );
