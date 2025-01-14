@@ -6,17 +6,11 @@ export default function SmallBoard({
   currentMarkerToPlace,
   setCurrentMarkerToPlace,
 }) {
-  const [boardState, setBoardState] = useState([
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-  ]);
+  const [boardState, setBoardState] = useState({
+    boardCellList: [null, null, null, null, null, null, null, null, null],
+    wonBy: null,
+    isPlayable: true,
+  });
 
   const numberToMainCellBorderMap = {
     1: "border-right border-bottom",
@@ -31,10 +25,193 @@ export default function SmallBoard({
   };
 
   function handleOnMarkerPlace(number) {
-    let newBoardState = [...boardState];
-    newBoardState[number - 1] = currentMarkerToPlace;
-    setBoardState(newBoardState);
-    setCurrentMarkerToPlace(currentMarkerToPlace === "X" ? "O" : "X");
+    if (!boardState.wonBy) {
+      let newBoardCellList = [...boardState.boardCellList];
+      newBoardCellList[number - 1] = currentMarkerToPlace;
+      let newWonBy = checkWinAndReturnMarker(
+        number,
+        currentMarkerToPlace,
+        newBoardCellList
+      );
+      let newIsPlayable =
+        newWonBy || !newBoardCellList.includes(null) ? false : true;
+      let newBoardState = {
+        ...boardState,
+        boardCellList: newBoardCellList,
+        wonBy: newWonBy,
+        isPlayable: newIsPlayable,
+      };
+      setBoardState(newBoardState);
+      setCurrentMarkerToPlace(currentMarkerToPlace === "X" ? "O" : "X");
+    } else {
+      alert(
+        "This game has already been won. For now, this will be an alert later we can make this more appealing and also include better thought out UX elements."
+      );
+    }
+  }
+
+  function checkWinAndReturnMarker(number, marker, boardCellListToCheck) {
+    switch (number) {
+      case 1: {
+        if (
+          boardCellListToCheck[1] === marker &&
+          boardCellListToCheck[2] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[3] === marker &&
+          boardCellListToCheck[6] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[4] === marker &&
+          boardCellListToCheck[8] === marker
+        ) {
+          return marker;
+        }
+        return null;
+      }
+      case 2: {
+        if (
+          boardCellListToCheck[0] === marker &&
+          boardCellListToCheck[2] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[4] === marker &&
+          boardCellListToCheck[7] === marker
+        ) {
+          return marker;
+        }
+        return null;
+      }
+      case 3: {
+        if (
+          boardCellListToCheck[0] === marker &&
+          boardCellListToCheck[1] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[5] === marker &&
+          boardCellListToCheck[8] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[4] === marker &&
+          boardCellListToCheck[6] === marker
+        ) {
+          return marker;
+        }
+        return null;
+      }
+      case 4: {
+        if (
+          boardCellListToCheck[0] === marker &&
+          boardCellListToCheck[6] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[4] === marker &&
+          boardCellListToCheck[5] === marker
+        ) {
+          return marker;
+        }
+        return null;
+      }
+      case 5: {
+        if (
+          boardCellListToCheck[0] === marker &&
+          boardCellListToCheck[8] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[2] === marker &&
+          boardCellListToCheck[6] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[1] === marker &&
+          boardCellListToCheck[7] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[3] === marker &&
+          boardCellListToCheck[5] === marker
+        ) {
+          return marker;
+        }
+        return null;
+      }
+      case 6: {
+        if (
+          boardCellListToCheck[2] === marker &&
+          boardCellListToCheck[8] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[3] === marker &&
+          boardCellListToCheck[4] === marker
+        ) {
+          return marker;
+        }
+        return null;
+      }
+      case 7: {
+        if (
+          boardCellListToCheck[0] === marker &&
+          boardCellListToCheck[3] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[7] === marker &&
+          boardCellListToCheck[8] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[4] === marker &&
+          boardCellListToCheck[2] === marker
+        ) {
+          return marker;
+        }
+        return null;
+      }
+      case 8: {
+        if (
+          boardCellListToCheck[6] === marker &&
+          boardCellListToCheck[8] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[4] === marker &&
+          boardCellListToCheck[1] === marker
+        ) {
+          return marker;
+        }
+        return null;
+      }
+      case 9: {
+        if (
+          boardCellListToCheck[6] === marker &&
+          boardCellListToCheck[7] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[2] === marker &&
+          boardCellListToCheck[5] === marker
+        ) {
+          return marker;
+        } else if (
+          boardCellListToCheck[0] === marker &&
+          boardCellListToCheck[4] === marker
+        ) {
+          return marker;
+        }
+        return null;
+      }
+      default: {
+        return null;
+      }
+    }
   }
 
   return (
@@ -45,50 +222,55 @@ export default function SmallBoard({
         <div className="small-grid-container">
           <SmallBoardCell
             number={1}
-            cellValue={boardState[0]}
+            cellValue={boardState.boardCellList[0]}
             onMarkerPlace={handleOnMarkerPlace}
           ></SmallBoardCell>
           <SmallBoardCell
             number={2}
-            cellValue={boardState[1]}
+            cellValue={boardState.boardCellList[1]}
             onMarkerPlace={handleOnMarkerPlace}
           ></SmallBoardCell>
           <SmallBoardCell
             number={3}
-            cellValue={boardState[2]}
+            cellValue={boardState.boardCellList[2]}
             onMarkerPlace={handleOnMarkerPlace}
           ></SmallBoardCell>
           <SmallBoardCell
             number={4}
-            cellValue={boardState[3]}
+            cellValue={boardState.boardCellList[3]}
             onMarkerPlace={handleOnMarkerPlace}
           ></SmallBoardCell>
           <SmallBoardCell
             number={5}
-            cellValue={boardState[4]}
+            cellValue={boardState.boardCellList[4]}
             onMarkerPlace={handleOnMarkerPlace}
           ></SmallBoardCell>
           <SmallBoardCell
             number={6}
-            cellValue={boardState[5]}
+            cellValue={boardState.boardCellList[5]}
             onMarkerPlace={handleOnMarkerPlace}
           ></SmallBoardCell>
           <SmallBoardCell
             number={7}
-            cellValue={boardState[6]}
+            cellValue={boardState.boardCellList[6]}
             onMarkerPlace={handleOnMarkerPlace}
           ></SmallBoardCell>
           <SmallBoardCell
             number={8}
-            cellValue={boardState[7]}
+            cellValue={boardState.boardCellList[7]}
             onMarkerPlace={handleOnMarkerPlace}
           ></SmallBoardCell>
           <SmallBoardCell
             number={9}
-            cellValue={boardState[8]}
+            cellValue={boardState.boardCellList[8]}
             onMarkerPlace={handleOnMarkerPlace}
           ></SmallBoardCell>
           {/* <div className="overlay-small-board">X</div> */}
+          {boardState.wonBy ? (
+            <div className="overlay-small-board">{boardState.wonBy}</div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
