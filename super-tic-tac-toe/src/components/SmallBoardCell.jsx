@@ -23,7 +23,12 @@ export default function SmallBoardCell({ number, cellValue, onMarkerPlace }) {
   return (
     <>
       <div
-        className={`${"small-grid-cell " + numberToSmallCellBorderMap[number]}`}
+        className={`${
+          "small-grid-cell " +
+          numberToSmallCellBorderMap[number] +
+          " marker-" +
+          cellValue
+        } `}
         onClick={placeMarker}
       >
         {`${cellValue ? cellValue : ""}`}

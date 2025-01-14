@@ -267,7 +267,18 @@ export default function SmallBoard({
           ></SmallBoardCell>
           {/* <div className="overlay-small-board">X</div> */}
           {boardState.wonBy ? (
-            <div className="overlay-small-board">{boardState.wonBy}</div>
+            <div
+              className={
+                "overlay-small-board " +
+                `${
+                  boardState.wonBy === "X"
+                    ? "marker-X-overlay"
+                    : "marker-O-overlay"
+                }`
+              }
+            >
+              {boardState.wonBy}
+            </div>
           ) : (
             <></>
           )}
