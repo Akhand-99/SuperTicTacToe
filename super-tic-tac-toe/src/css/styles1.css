@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    color: wheat;
+    /* color: wheat; */
     margin: 0 auto;
 }
 
@@ -19,14 +19,20 @@ body {
     /* display: flex;
     justify-content: center;
     align-items: center; */
+    /* border-color: wheat; */
+    /* border-color: #FFC47F; */
 }
 
 .border-right {
     border-right: solid;
+    /* border-color: #FFC47F; */
+    border-color: #DF9ECD;
 }
 
 .border-bottom {
     border-bottom: solid;
+    /* border-color: #FFC47F; */
+    border-color: #DF9ECD;
 }
 
 .main-grid-cell.border-right {
@@ -52,6 +58,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border-color: wheat; */
+    /* border-color: #FFC47F; */
+    border-color: #FF929F;
 }
 
 .small-grid-cell.border-right {
@@ -70,4 +79,64 @@ body {
     left: 22%;
     top: 3%;
     opacity: 70%;
+}
+
+.marker-X {
+    /* color: #1E90FF; */
+    /* color: #00FFFF; */
+    /* color: #FFD700; */
+    /* color: #32CD32; */
+    /* color: #FFFFFF; */
+    /* color: #F4A460; */
+    /* color: #DF9ECD; */
+    color: #FFC47F;
+}
+
+.marker-O {
+    /* color: #FF4500; */
+    /* color: #FFA500; */
+    /* color: #C0C0C0; */
+    /* color: #FF00FF; */
+    /* color: #D3D3D3; */
+    /* color: #6495ED; */
+    /* color: #FF929F; */
+    /* color: #B4E3FF; */
+    color: #318E67;
+}
+
+/* 1. Classic Contrast
+X: Blue (#1E90FF or DodgerBlue)
+O: Red (#FF4500 or OrangeRed)
+These classic colors are vibrant and stand out against the dark background.
+2. Warm & Cool
+X: Cyan (#00FFFF)
+O: Orange (#FFA500)
+This pairing adds a balance of warm and cool tones while being bright against black.
+3. Elegant & Subtle
+X: Gold (#FFD700)
+O: Silver (#C0C0C0)
+These metallic-inspired colors complement the wheat gridlines for an elegant look.
+4. Neon Glow
+X: Lime Green (#32CD32)
+O: Magenta (#FF00FF)
+These neon-like colors pop on a black background, giving a modern or arcade-like feel.
+5. Monochrome Accent
+X: White (#FFFFFF)
+O: Light Gray (#D3D3D3)
+A minimalist and clean look that works well with your wheat gridlines.
+6. Earth Tones
+X: Sandy Brown (#F4A460)
+O: Cornflower Blue (#6495ED)
+These colors pair naturally with the wheat gridlines for a soft, cohesive palette.
+Final Tip: Hover States
+Add hover effects for even more interactivity:
+X hover color: Slightly darker or lighter version of the chosen X color.
+O hover color: Slightly darker or lighter version of the chosen O color. */
+
+.marker-X-overlay {
+    color: #FFC47F;
+}
+
+.marker-O-overlay {
+    color: #318E67;
 }
