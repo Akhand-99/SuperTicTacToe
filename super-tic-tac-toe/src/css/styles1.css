@@ -140,3 +140,15 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
 .marker-O-overlay {
     color: #318E67;
 }
+
+/* .transparent {
+    background-color: #318E67;
+} */
+
+.marker-X.transparent {
+    color: rgba(255, 196, 127, 0.3)
+}
+
+.marker-O.transparent {
+    color: rgba(49, 142, 103, 0.3);
+}

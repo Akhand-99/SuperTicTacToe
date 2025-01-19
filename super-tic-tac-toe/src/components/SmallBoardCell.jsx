@@ -1,4 +1,13 @@
-export default function SmallBoardCell({ number, cellValue, onMarkerPlace }) {
+import { useRef } from "react";
+
+export default function SmallBoardCell({
+  number,
+  cellValue,
+  onMarkerPlace,
+  currentMarkerToPlace,
+  isPlayable,
+}) {
+  const cellRef = useRef(null);
   const numberToSmallCellBorderMap = {
     1: "border-right border-bottom",
     2: "border-right border-bottom",
@@ -20,9 +29,30 @@ export default function SmallBoardCell({ number, cellValue, onMarkerPlace }) {
       );
     }
   }
+
+  function onMarkerAboutToPlace() {
+    if (!cellRef.current.innerHTML && isPlayable) {
+      cellRef.current.innerHTML = currentMarkerToPlace;
+      cellRef.current.className = cellRef.current.className.replace(
+        "marker-null",
+        `marker-${currentMarkerToPlace} transparent`
+      );
+    }
+  }
+
+  function onMarkerAboutToPlaceReject() {
+    if (cellRef.current.className.includes("transparent")) {
+      cellRef.current.innerHTML = null;
+      cellRef.current.className = cellRef.current.className.replace(
+        `marker-${currentMarkerToPlace} transparent`,
+        "marker-null"
+      );
+    }
+  }
   return (
     <>
       <div
+        ref={cellRef}
         className={`${
           "small-grid-cell " +
           numberToSmallCellBorderMap[number] +
@@ -30,8 +60,11 @@ export default function SmallBoardCell({ number, cellValue, onMarkerPlace }) {
           cellValue
         } `}
         onClick={placeMarker}
+        onMouseEnter={onMarkerAboutToPlace}
+        onMouseLeave={onMarkerAboutToPlaceReject}
       >
-        {`${cellValue ? cellValue : ""}`}
+        {/* {`${cellValue ? cellValue : ""}`} */}
+        {cellValue}
       </div>
     </>
   );

@@ -224,46 +224,64 @@ export default function SmallBoard({
             number={1}
             cellValue={boardState.boardCellList[0]}
             onMarkerPlace={handleOnMarkerPlace}
+            currentMarkerToPlace={currentMarkerToPlace}
+            isPlayable={boardState.isPlayable}
           ></SmallBoardCell>
           <SmallBoardCell
             number={2}
             cellValue={boardState.boardCellList[1]}
             onMarkerPlace={handleOnMarkerPlace}
+            currentMarkerToPlace={currentMarkerToPlace}
+            isPlayable={boardState.isPlayable}
           ></SmallBoardCell>
           <SmallBoardCell
             number={3}
             cellValue={boardState.boardCellList[2]}
             onMarkerPlace={handleOnMarkerPlace}
+            currentMarkerToPlace={currentMarkerToPlace}
+            isPlayable={boardState.isPlayable}
           ></SmallBoardCell>
           <SmallBoardCell
             number={4}
             cellValue={boardState.boardCellList[3]}
             onMarkerPlace={handleOnMarkerPlace}
+            currentMarkerToPlace={currentMarkerToPlace}
+            isPlayable={boardState.isPlayable}
           ></SmallBoardCell>
           <SmallBoardCell
             number={5}
             cellValue={boardState.boardCellList[4]}
             onMarkerPlace={handleOnMarkerPlace}
+            currentMarkerToPlace={currentMarkerToPlace}
+            isPlayable={boardState.isPlayable}
           ></SmallBoardCell>
           <SmallBoardCell
             number={6}
             cellValue={boardState.boardCellList[5]}
             onMarkerPlace={handleOnMarkerPlace}
+            currentMarkerToPlace={currentMarkerToPlace}
+            isPlayable={boardState.isPlayable}
           ></SmallBoardCell>
           <SmallBoardCell
             number={7}
             cellValue={boardState.boardCellList[6]}
             onMarkerPlace={handleOnMarkerPlace}
+            currentMarkerToPlace={currentMarkerToPlace}
+            isPlayable={boardState.isPlayable}
           ></SmallBoardCell>
           <SmallBoardCell
             number={8}
             cellValue={boardState.boardCellList[7]}
             onMarkerPlace={handleOnMarkerPlace}
+            currentMarkerToPlace={currentMarkerToPlace}
+            isPlayable={boardState.isPlayable}
           ></SmallBoardCell>
           <SmallBoardCell
             number={9}
             cellValue={boardState.boardCellList[8]}
             onMarkerPlace={handleOnMarkerPlace}
+            currentMarkerToPlace={currentMarkerToPlace}
+            isPlayable={boardState.isPlayable}
           ></SmallBoardCell>
           {/* <div className="overlay-small-board">X</div> */}
           {boardState.wonBy ? (
