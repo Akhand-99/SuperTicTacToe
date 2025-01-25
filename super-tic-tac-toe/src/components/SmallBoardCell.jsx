@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import numberToCellBorderMap from "./utils/numberToCellBorderMap";
 
 export default function SmallBoardCell({
   number,
@@ -8,17 +9,6 @@ export default function SmallBoardCell({
   isPlayable,
 }) {
   const cellRef = useRef(null);
-  const numberToSmallCellBorderMap = {
-    1: "border-right border-bottom",
-    2: "border-right border-bottom",
-    3: "border-bottom",
-    4: "border-right border-bottom",
-    5: "border-right border-bottom",
-    6: "border-bottom",
-    7: "border-right",
-    8: "border-right",
-    9: "",
-  };
 
   function placeMarker() {
     if (!cellValue) {
@@ -55,7 +45,7 @@ export default function SmallBoardCell({
         ref={cellRef}
         className={`${
           "small-grid-cell " +
-          numberToSmallCellBorderMap[number] +
+          numberToCellBorderMap[number] +
           " marker-" +
           cellValue
         } `}

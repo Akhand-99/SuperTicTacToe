@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SmallBoardCell from "./SmallBoardCell";
+import numberToCellBorderMap from "./utils/numberToCellBorderMap";
 
 export default function SmallBoard({
   number,
@@ -11,18 +12,6 @@ export default function SmallBoard({
     wonBy: null,
     isPlayable: true,
   });
-
-  const numberToMainCellBorderMap = {
-    1: "border-right border-bottom",
-    2: "border-right border-bottom",
-    3: "border-bottom",
-    4: "border-right border-bottom",
-    5: "border-right border-bottom",
-    6: "border-bottom",
-    7: "border-right",
-    8: "border-right",
-    9: "",
-  };
 
   function handleOnMarkerPlace(number) {
     if (!boardState.wonBy) {
@@ -216,9 +205,7 @@ export default function SmallBoard({
 
   return (
     <>
-      <div
-        className={`${"main-grid-cell " + numberToMainCellBorderMap[number]}`}
-      >
+      <div className={`${"main-grid-cell " + numberToCellBorderMap[number]}`}>
         <div className="small-grid-container">
           <SmallBoardCell
             number={1}
