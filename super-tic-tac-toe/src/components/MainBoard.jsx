@@ -3,6 +3,11 @@ import { useState } from "react";
 
 export default function MainBoard() {
   const [currentMarkerToPlace, setCurrentMarkerToPlace] = useState("X");
+  const [mainBoardState, setMainBoardState] = useState({
+    boardCellList: [null, null, null, null, null, null, null, null, null],
+    wonBy: null,
+    isFinished: false,
+  });
   return (
     <>
       <div className="main-grid-container">

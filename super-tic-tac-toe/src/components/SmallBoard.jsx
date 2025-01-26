@@ -11,7 +11,14 @@ export default function SmallBoard({
     boardCellList: [null, null, null, null, null, null, null, null, null],
     wonBy: null,
     isPlayable: true,
-  });
+  }); //instead can we make it like status: active, inactive, finished or even better isActive, isFinished as keys)
+  // main board can have boardCellList, isFinished, wonBy (if null and finished true, then draw)
+
+  /* const [boardState, setBoardState] = useState({
+    boardCellList: [null, null, null, null, null, null, null, null, null],
+    isActive: true,
+    isFinished: false,
+  });  */
 
   function handleOnMarkerPlace(number) {
     if (!boardState.wonBy) {
