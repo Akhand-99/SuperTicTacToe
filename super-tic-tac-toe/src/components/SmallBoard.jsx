@@ -6,42 +6,60 @@ export default function SmallBoard({
   number,
   currentMarkerToPlace,
   setCurrentMarkerToPlace,
+  mainBoardState,
+  setMainBoardState,
+  isActive,
 }) {
   const [boardState, setBoardState] = useState({
     boardCellList: [null, null, null, null, null, null, null, null, null],
-    wonBy: null,
-    isPlayable: true,
-  }); //instead can we make it like status: active, inactive, finished or even better isActive, isFinished as keys)
-  // main board can have boardCellList, isFinished, wonBy (if null and finished true, then draw)
+    wonBy: null, //"X" || "O" || "None" || null. If null, game is not finished.
+  });
 
-  /* const [boardState, setBoardState] = useState({
-    boardCellList: [null, null, null, null, null, null, null, null, null],
-    isActive: true,
-    isFinished: false,
-  });  */
-
-  function handleOnMarkerPlace(number) {
-    if (!boardState.wonBy) {
+  function handleOnMarkerPlace(smallBoardCellNumber) {
+    if (isActive) {
       let newBoardCellList = [...boardState.boardCellList];
-      newBoardCellList[number - 1] = currentMarkerToPlace;
+      newBoardCellList[smallBoardCellNumber - 1] = currentMarkerToPlace;
       let newWonBy = checkWinAndReturnMarker(
-        number,
+        smallBoardCellNumber,
         currentMarkerToPlace,
         newBoardCellList
       );
-      let newIsPlayable =
-        newWonBy || !newBoardCellList.includes(null) ? false : true;
+
+      if (!newWonBy && !newBoardCellList.includes(null)) {
+        newWonBy = "None";
+      }
+
       let newBoardState = {
         ...boardState,
         boardCellList: newBoardCellList,
         wonBy: newWonBy,
-        isPlayable: newIsPlayable,
       };
       setBoardState(newBoardState);
       setCurrentMarkerToPlace(currentMarkerToPlace === "X" ? "O" : "X");
+
+      if (newWonBy) {
+        let newMainBoardCellList = [...mainBoardState.boardCellList];
+        newMainBoardCellList[number - 1] = newWonBy;
+
+        let newMainBoardState = {
+          ...mainBoardState,
+          boardCellList: newMainBoardCellList,
+        };
+        setMainBoardState(newMainBoardState);
+      }
+    } else if (boardState.wonBy) {
+      if (boardState.wonBy === "None") {
+        alert(
+          `This game has already been finished (Draw). For now, this will be an alert later we can make this more appealing and also include better thought out UX elements.`
+        );
+      } else {
+        alert(
+          `This game has already been finished (Won by ${boardState.wonBy}). For now, this will be an alert later we can make this more appealing and also include better thought out UX elements.`
+        );
+      }
     } else {
       alert(
-        "This game has already been won. For now, this will be an alert later we can make this more appealing and also include better thought out UX elements."
+        `This board is inactive, marker can be placed on the active (highlighted) board only`
       );
     }
   }
@@ -210,6 +228,17 @@ export default function SmallBoard({
     }
   }
 
+  let overlayContent = null;
+  if (boardState.wonBy === "X") {
+    overlayContent = (
+      <div className={`overlay-small-board marker-X-overlay`}>X</div>
+    );
+  } else if (boardState.wonBy === "O") {
+    overlayContent = (
+      <div className={`overlay-small-board marker-O-overlay`}>O</div>
+    );
+  }
+
   return (
     <>
       <div className={`${"main-grid-cell " + numberToCellBorderMap[number]}`}>
@@ -277,23 +306,8 @@ export default function SmallBoard({
             currentMarkerToPlace={currentMarkerToPlace}
             isPlayable={boardState.isPlayable}
           ></SmallBoardCell>
-          {/* <div className="overlay-small-board">X</div> */}
-          {boardState.wonBy ? (
-            <div
-              className={
-                "overlay-small-board " +
-                `${
-                  boardState.wonBy === "X"
-                    ? "marker-X-overlay"
-                    : "marker-O-overlay"
-                }`
-              }
-            >
-              {boardState.wonBy}
-            </div>
-          ) : (
-            <></>
-          )}
+          {/* If this board is won, the winning marker is displayed as a big overlay on the board */}
+          {overlayContent}
         </div>
       </div>
     </>
