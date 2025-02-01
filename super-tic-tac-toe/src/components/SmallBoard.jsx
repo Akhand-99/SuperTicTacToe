@@ -37,16 +37,26 @@ export default function SmallBoard({
       setBoardState(newBoardState);
       setCurrentMarkerToPlace(currentMarkerToPlace === "X" ? "O" : "X");
 
+      let newMainBoardState;
       if (newWonBy) {
         let newMainBoardCellList = [...mainBoardState.boardCellList];
         newMainBoardCellList[number - 1] = newWonBy;
 
-        let newMainBoardState = {
+        newMainBoardState = {
           ...mainBoardState,
           boardCellList: newMainBoardCellList,
         };
         setMainBoardState(newMainBoardState);
       }
+
+      let newActiveBoardNumber = !mainBoardState.boardCellList[
+        smallBoardCellNumber - 1
+      ]
+        ? smallBoardCellNumber
+        : 0;
+      setMainBoardState((prev) => {
+        return { ...prev, activeBoardNumber: newActiveBoardNumber };
+      });
     } else if (boardState.wonBy) {
       if (boardState.wonBy === "None") {
         alert(
