@@ -61,6 +61,7 @@ body {
     /* border-color: wheat; */
     /* border-color: #FFC47F; */
     border-color: #FF929F;
+    /* rgba(255, 146, 159, 0.2) is the 20% opacity version of above color */
 }
 
 .small-grid-cell.border-right {
@@ -152,3 +153,14 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
 .marker-O.transparent {
     color: rgba(49, 142, 103, 0.3);
 }
+
+/* .inactive-board {
+    opacity: 15%;
+} */
+
+.inactive {
+    border-color: rgba(255, 146, 159, 0.2);
+}
+
+/* background: rgba(49, 142, 103, 0.4);
+    background: rgba(255, 196, 127, 0.3); as cell bg colors*/ 

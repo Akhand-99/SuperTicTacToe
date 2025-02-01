@@ -59,6 +59,7 @@ export default function SmallBoard({
       });
     } else if (boardState.wonBy) {
       if (boardState.wonBy === "None") {
+        // I think this condition is never met because, if game is draw, there are no empty cells and the "This cell is not empty" alert will be triggered from SmallBoardCell component
         alert(
           `This game has already been finished (Draw). For now, this will be an alert later we can make this more appealing and also include better thought out UX elements.`
         );
@@ -252,69 +253,73 @@ export default function SmallBoard({
   return (
     <>
       <div className={`${"main-grid-cell " + numberToCellBorderMap[number]}`}>
-        <div className="small-grid-container">
+        <div
+          className={`small-grid-container ${
+            !isActive ? "inactive-board" : ""
+          }`}
+        >
           <SmallBoardCell
             number={1}
             cellValue={boardState.boardCellList[0]}
             onMarkerPlace={handleOnMarkerPlace}
             currentMarkerToPlace={currentMarkerToPlace}
-            isPlayable={boardState.isPlayable}
+            isActive={isActive}
           ></SmallBoardCell>
           <SmallBoardCell
             number={2}
             cellValue={boardState.boardCellList[1]}
             onMarkerPlace={handleOnMarkerPlace}
             currentMarkerToPlace={currentMarkerToPlace}
-            isPlayable={boardState.isPlayable}
+            isActive={isActive}
           ></SmallBoardCell>
           <SmallBoardCell
             number={3}
             cellValue={boardState.boardCellList[2]}
             onMarkerPlace={handleOnMarkerPlace}
             currentMarkerToPlace={currentMarkerToPlace}
-            isPlayable={boardState.isPlayable}
+            isActive={isActive}
           ></SmallBoardCell>
           <SmallBoardCell
             number={4}
             cellValue={boardState.boardCellList[3]}
             onMarkerPlace={handleOnMarkerPlace}
             currentMarkerToPlace={currentMarkerToPlace}
-            isPlayable={boardState.isPlayable}
+            isActive={isActive}
           ></SmallBoardCell>
           <SmallBoardCell
             number={5}
             cellValue={boardState.boardCellList[4]}
             onMarkerPlace={handleOnMarkerPlace}
             currentMarkerToPlace={currentMarkerToPlace}
-            isPlayable={boardState.isPlayable}
+            isActive={isActive}
           ></SmallBoardCell>
           <SmallBoardCell
             number={6}
             cellValue={boardState.boardCellList[5]}
             onMarkerPlace={handleOnMarkerPlace}
             currentMarkerToPlace={currentMarkerToPlace}
-            isPlayable={boardState.isPlayable}
+            isActive={isActive}
           ></SmallBoardCell>
           <SmallBoardCell
             number={7}
             cellValue={boardState.boardCellList[6]}
             onMarkerPlace={handleOnMarkerPlace}
             currentMarkerToPlace={currentMarkerToPlace}
-            isPlayable={boardState.isPlayable}
+            isActive={isActive}
           ></SmallBoardCell>
           <SmallBoardCell
             number={8}
             cellValue={boardState.boardCellList[7]}
             onMarkerPlace={handleOnMarkerPlace}
             currentMarkerToPlace={currentMarkerToPlace}
-            isPlayable={boardState.isPlayable}
+            isActive={isActive}
           ></SmallBoardCell>
           <SmallBoardCell
             number={9}
             cellValue={boardState.boardCellList[8]}
             onMarkerPlace={handleOnMarkerPlace}
             currentMarkerToPlace={currentMarkerToPlace}
-            isPlayable={boardState.isPlayable}
+            isActive={isActive}
           ></SmallBoardCell>
           {/* If this board is won, the winning marker is displayed as a big overlay on the board */}
           {overlayContent}

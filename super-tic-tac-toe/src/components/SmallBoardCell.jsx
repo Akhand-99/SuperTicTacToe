@@ -6,7 +6,7 @@ export default function SmallBoardCell({
   cellValue,
   onMarkerPlace,
   currentMarkerToPlace,
-  isPlayable,
+  isActive,
 }) {
   const cellRef = useRef(null);
 
@@ -21,7 +21,7 @@ export default function SmallBoardCell({
   }
 
   function onMarkerAboutToPlace() {
-    if (!cellRef.current.innerHTML && isPlayable) {
+    if (!cellRef.current.innerHTML && isActive) {
       cellRef.current.innerHTML = currentMarkerToPlace;
       cellRef.current.className = cellRef.current.className.replace(
         "marker-null",
@@ -48,7 +48,7 @@ export default function SmallBoardCell({
           numberToCellBorderMap[number] +
           " marker-" +
           cellValue
-        } `}
+        } ${!isActive ? "inactive" : ""}`}
         onClick={placeMarker}
         onMouseEnter={onMarkerAboutToPlace}
         onMouseLeave={onMarkerAboutToPlaceReject}
