@@ -46,7 +46,8 @@ export default function SmallBoard({
           ...mainBoardState,
           boardCellList: newMainBoardCellList,
         };
-        setMainBoardState(newMainBoardState);
+        setMainBoardState(newMainBoardState); //Instead of this can we call a func like onSmallBoardVictory() which updates
+        // the mainBoardState as well as calls checkWinAndReturnMarker() in mainBoard to determine main board victory?
       }
 
       let newActiveBoardNumber = !mainBoardState.boardCellList[
