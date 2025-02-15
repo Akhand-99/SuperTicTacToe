@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SmallBoardCell from "./SmallBoardCell";
 import numberToCellBorderMap from "./utils/numberToCellBorderMap";
+import checkWinAndReturnMarker from "./utils/checkWinAndReturnMarker";
 
 export default function SmallBoard({
   number,
@@ -8,6 +9,7 @@ export default function SmallBoard({
   setCurrentMarkerToPlace,
   mainBoardState,
   setMainBoardState,
+  handleSmallBoardVictory,
   isActive,
 }) {
   const [boardState, setBoardState] = useState({
@@ -25,6 +27,7 @@ export default function SmallBoard({
         newBoardCellList
       );
 
+      // Condition to check for a Draw
       if (!newWonBy && !newBoardCellList.includes(null)) {
         newWonBy = "None";
       }
@@ -37,17 +40,18 @@ export default function SmallBoard({
       setBoardState(newBoardState);
       setCurrentMarkerToPlace(currentMarkerToPlace === "X" ? "O" : "X");
 
-      let newMainBoardState;
+      // let newMainBoardState;
       if (newWonBy) {
-        let newMainBoardCellList = [...mainBoardState.boardCellList];
-        newMainBoardCellList[number - 1] = newWonBy;
+        // let newMainBoardCellList = [...mainBoardState.boardCellList];
+        // newMainBoardCellList[number - 1] = newWonBy;
 
-        newMainBoardState = {
-          ...mainBoardState,
-          boardCellList: newMainBoardCellList,
-        };
-        setMainBoardState(newMainBoardState); //Instead of this can we call a func like onSmallBoardVictory() which updates
+        // newMainBoardState = {
+        //   ...mainBoardState,
+        //   boardCellList: newMainBoardCellList,
+        // };
+        // setMainBoardState(newMainBoardState); //Instead of this can we call a func like onSmallBoardVictory() which updates
         // the mainBoardState as well as calls checkWinAndReturnMarker() in mainBoard to determine main board victory?
+        handleSmallBoardVictory(number, newWonBy);
       }
 
       let newActiveBoardNumber = !mainBoardState.boardCellList[
@@ -56,6 +60,9 @@ export default function SmallBoard({
         ? smallBoardCellNumber
         : 0;
       setMainBoardState((prev) => {
+        if (prev.wonBy) {
+          return { ...prev, activeBoardNumber: -1 };
+        }
         return { ...prev, activeBoardNumber: newActiveBoardNumber };
       });
     } else if (boardState.wonBy) {
@@ -73,170 +80,6 @@ export default function SmallBoard({
       alert(
         `This board is inactive, marker can be placed on the active (highlighted) board only`
       );
-    }
-  }
-
-  function checkWinAndReturnMarker(number, marker, boardCellListToCheck) {
-    switch (number) {
-      case 1: {
-        if (
-          boardCellListToCheck[1] === marker &&
-          boardCellListToCheck[2] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[3] === marker &&
-          boardCellListToCheck[6] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[4] === marker &&
-          boardCellListToCheck[8] === marker
-        ) {
-          return marker;
-        }
-        return null;
-      }
-      case 2: {
-        if (
-          boardCellListToCheck[0] === marker &&
-          boardCellListToCheck[2] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[4] === marker &&
-          boardCellListToCheck[7] === marker
-        ) {
-          return marker;
-        }
-        return null;
-      }
-      case 3: {
-        if (
-          boardCellListToCheck[0] === marker &&
-          boardCellListToCheck[1] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[5] === marker &&
-          boardCellListToCheck[8] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[4] === marker &&
-          boardCellListToCheck[6] === marker
-        ) {
-          return marker;
-        }
-        return null;
-      }
-      case 4: {
-        if (
-          boardCellListToCheck[0] === marker &&
-          boardCellListToCheck[6] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[4] === marker &&
-          boardCellListToCheck[5] === marker
-        ) {
-          return marker;
-        }
-        return null;
-      }
-      case 5: {
-        if (
-          boardCellListToCheck[0] === marker &&
-          boardCellListToCheck[8] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[2] === marker &&
-          boardCellListToCheck[6] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[1] === marker &&
-          boardCellListToCheck[7] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[3] === marker &&
-          boardCellListToCheck[5] === marker
-        ) {
-          return marker;
-        }
-        return null;
-      }
-      case 6: {
-        if (
-          boardCellListToCheck[2] === marker &&
-          boardCellListToCheck[8] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[3] === marker &&
-          boardCellListToCheck[4] === marker
-        ) {
-          return marker;
-        }
-        return null;
-      }
-      case 7: {
-        if (
-          boardCellListToCheck[0] === marker &&
-          boardCellListToCheck[3] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[7] === marker &&
-          boardCellListToCheck[8] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[4] === marker &&
-          boardCellListToCheck[2] === marker
-        ) {
-          return marker;
-        }
-        return null;
-      }
-      case 8: {
-        if (
-          boardCellListToCheck[6] === marker &&
-          boardCellListToCheck[8] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[4] === marker &&
-          boardCellListToCheck[1] === marker
-        ) {
-          return marker;
-        }
-        return null;
-      }
-      case 9: {
-        if (
-          boardCellListToCheck[6] === marker &&
-          boardCellListToCheck[7] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[2] === marker &&
-          boardCellListToCheck[5] === marker
-        ) {
-          return marker;
-        } else if (
-          boardCellListToCheck[0] === marker &&
-          boardCellListToCheck[4] === marker
-        ) {
-          return marker;
-        }
-        return null;
-      }
-      default: {
-        return null;
-      }
     }
   }
 
