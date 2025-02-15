@@ -7,7 +7,6 @@ export default function SmallBoard({
   number,
   currentMarkerToPlace,
   setCurrentMarkerToPlace,
-  mainBoardState,
   setMainBoardState,
   handleSmallBoardVictory,
   isActive,
@@ -40,30 +39,20 @@ export default function SmallBoard({
       setBoardState(newBoardState);
       setCurrentMarkerToPlace(currentMarkerToPlace === "X" ? "O" : "X");
 
-      // let newMainBoardState;
       if (newWonBy) {
-        // let newMainBoardCellList = [...mainBoardState.boardCellList];
-        // newMainBoardCellList[number - 1] = newWonBy;
-
-        // newMainBoardState = {
-        //   ...mainBoardState,
-        //   boardCellList: newMainBoardCellList,
-        // };
-        // setMainBoardState(newMainBoardState); //Instead of this can we call a func like onSmallBoardVictory() which updates
-        // the mainBoardState as well as calls checkWinAndReturnMarker() in mainBoard to determine main board victory?
         handleSmallBoardVictory(number, newWonBy);
       }
 
-      let newActiveBoardNumber = !mainBoardState.boardCellList[
-        smallBoardCellNumber - 1
-      ]
-        ? smallBoardCellNumber
-        : 0;
       setMainBoardState((prev) => {
         if (prev.wonBy) {
           return { ...prev, activeBoardNumber: -1 };
         }
-        return { ...prev, activeBoardNumber: newActiveBoardNumber };
+        return {
+          ...prev,
+          activeBoardNumber: !prev.boardCellList[smallBoardCellNumber - 1]
+            ? smallBoardCellNumber
+            : 0,
+        };
       });
     } else if (boardState.wonBy) {
       if (boardState.wonBy === "None") {

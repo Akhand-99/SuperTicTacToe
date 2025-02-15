@@ -47,7 +47,6 @@ export default function MainBoard({
           number={1}
           currentMarkerToPlace={currentMarkerToPlace}
           setCurrentMarkerToPlace={setCurrentMarkerToPlace}
-          mainBoardState={mainBoardState}
           setMainBoardState={setMainBoardState}
           handleSmallBoardVictory={handleSmallBoardVictory}
           isActive={
@@ -62,7 +61,6 @@ export default function MainBoard({
           number={2}
           currentMarkerToPlace={currentMarkerToPlace}
           setCurrentMarkerToPlace={setCurrentMarkerToPlace}
-          mainBoardState={mainBoardState}
           setMainBoardState={setMainBoardState}
           handleSmallBoardVictory={handleSmallBoardVictory}
           isActive={
@@ -77,7 +75,6 @@ export default function MainBoard({
           number={3}
           currentMarkerToPlace={currentMarkerToPlace}
           setCurrentMarkerToPlace={setCurrentMarkerToPlace}
-          mainBoardState={mainBoardState}
           setMainBoardState={setMainBoardState}
           handleSmallBoardVictory={handleSmallBoardVictory}
           isActive={
@@ -92,7 +89,6 @@ export default function MainBoard({
           number={4}
           currentMarkerToPlace={currentMarkerToPlace}
           setCurrentMarkerToPlace={setCurrentMarkerToPlace}
-          mainBoardState={mainBoardState}
           setMainBoardState={setMainBoardState}
           handleSmallBoardVictory={handleSmallBoardVictory}
           isActive={
@@ -107,7 +103,6 @@ export default function MainBoard({
           number={5}
           currentMarkerToPlace={currentMarkerToPlace}
           setCurrentMarkerToPlace={setCurrentMarkerToPlace}
-          mainBoardState={mainBoardState}
           setMainBoardState={setMainBoardState}
           handleSmallBoardVictory={handleSmallBoardVictory}
           isActive={
@@ -122,7 +117,6 @@ export default function MainBoard({
           number={6}
           currentMarkerToPlace={currentMarkerToPlace}
           setCurrentMarkerToPlace={setCurrentMarkerToPlace}
-          mainBoardState={mainBoardState}
           setMainBoardState={setMainBoardState}
           handleSmallBoardVictory={handleSmallBoardVictory}
           isActive={
@@ -137,7 +131,6 @@ export default function MainBoard({
           number={7}
           currentMarkerToPlace={currentMarkerToPlace}
           setCurrentMarkerToPlace={setCurrentMarkerToPlace}
-          mainBoardState={mainBoardState}
           setMainBoardState={setMainBoardState}
           handleSmallBoardVictory={handleSmallBoardVictory}
           isActive={
@@ -152,7 +145,6 @@ export default function MainBoard({
           number={8}
           currentMarkerToPlace={currentMarkerToPlace}
           setCurrentMarkerToPlace={setCurrentMarkerToPlace}
-          mainBoardState={mainBoardState}
           setMainBoardState={setMainBoardState}
           handleSmallBoardVictory={handleSmallBoardVictory}
           isActive={
@@ -167,7 +159,6 @@ export default function MainBoard({
           number={9}
           currentMarkerToPlace={currentMarkerToPlace}
           setCurrentMarkerToPlace={setCurrentMarkerToPlace}
-          mainBoardState={mainBoardState}
           setMainBoardState={setMainBoardState}
           handleSmallBoardVictory={handleSmallBoardVictory}
           isActive={
