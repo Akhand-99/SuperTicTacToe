@@ -2,8 +2,10 @@ import SmallBoard from "./SmallBoard";
 import { useState } from "react";
 import checkWinAndReturnMarker from "./utils/checkWinAndReturnMarker";
 
-export default function MainBoard() {
-  const [currentMarkerToPlace, setCurrentMarkerToPlace] = useState("X");
+export default function MainBoard({
+  currentMarkerToPlace,
+  setCurrentMarkerToPlace,
+}) {
   const [mainBoardState, setMainBoardState] = useState({
     boardCellList: [null, null, null, null, null, null, null, null, null],
     wonBy: null, //"X" || "O" || "None" || null. If null, game is not finished.
