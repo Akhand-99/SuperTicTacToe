@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 // import './App.css'
@@ -9,6 +9,24 @@ import O_Avatar from "./assets/O_Avatar.png";
 
 function App() {
   const [currentMarkerToPlace, setCurrentMarkerToPlace] = useState("X");
+  const [isInitialRender, setIsInitialRender] = useState(true);
+
+  // useEffect(() => {
+  //   setTimeout(() => setIsInitialRender(false), 1000);
+  // });
+
+  useEffect(() => {
+    if (isInitialRender) {
+      if (currentMarkerToPlace === "O") {
+        setIsInitialRender(false);
+      }
+    }
+  }, [currentMarkerToPlace, isInitialRender]);
+
+  let oTurnIndicatorClsName = "";
+  if (!isInitialRender) {
+    oTurnIndicatorClsName = currentMarkerToPlace === "O" ? "visible" : "hidden";
+  }
 
   return (
     <>
@@ -25,6 +43,28 @@ function App() {
         id="player-o-avatar"
         className={currentMarkerToPlace === "O" ? "" : "dim"}
       ></img>
+      <div
+        className={`turn-indicator-div ${
+          currentMarkerToPlace === "X" ? "visible" : "hidden"
+        }`}
+        style={{ left: "2rem" }}
+      >{`X's Turn`}</div>
+      {/* <div
+        className={`turn-indicator-div ${
+          currentMarkerToPlace === "O" ? "visible" : "hidden"
+        }`}
+        style={{
+          right: "2rem",
+          display: `${isInitialRender ? "none" : "unset"}`,
+        }}
+      >{`O's Turn`}</div> */}
+      <div
+        className={`turn-indicator-div ${oTurnIndicatorClsName}`}
+        style={{
+          right: "2rem",
+          display: `${isInitialRender ? "none" : "flex"}`,
+        }}
+      >{`O's Turn`}</div>
       <MainBoard
         currentMarkerToPlace={currentMarkerToPlace}
         setCurrentMarkerToPlace={setCurrentMarkerToPlace}

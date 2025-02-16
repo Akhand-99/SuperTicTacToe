@@ -186,3 +186,40 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
 .dim {
     opacity: 30%;    
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+  
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.turn-indicator-div {
+    width: 15dvw;
+    height: 15dvw;
+    color: white;
+    background-color: #318E67;
+    position: absolute;
+    top: 35dvh;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.turn-indicator-div.visible {
+    animation: fadeIn 0.5s ease-in-out forwards, pulse 2s infinite ease-in-out;
+}
+
+.turn-indicator-div.hidden {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
