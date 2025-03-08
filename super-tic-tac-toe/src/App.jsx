@@ -15,6 +15,8 @@ function App() {
   //   setTimeout(() => setIsInitialRender(false), 1000);
   // });
 
+  // Revisited O turn indicatorlogic after a long time. For now this will be a lazy commit symbolizing my attempt to revisit this logic
+
   useEffect(() => {
     if (isInitialRender) {
       if (currentMarkerToPlace === "O") {
