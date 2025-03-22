@@ -11,12 +11,6 @@ function App() {
   const [currentMarkerToPlace, setCurrentMarkerToPlace] = useState("X");
   const [isInitialRender, setIsInitialRender] = useState(true);
 
-  // useEffect(() => {
-  //   setTimeout(() => setIsInitialRender(false), 1000);
-  // });
-
-  // Revisited O turn indicatorlogic after a long time. For now this will be a lazy commit symbolizing my attempt to revisit this logic
-
   useEffect(() => {
     if (isInitialRender) {
       if (currentMarkerToPlace === "O") {
@@ -45,28 +39,20 @@ function App() {
         id="player-o-avatar"
         className={currentMarkerToPlace === "O" ? "" : "dim"}
       ></img>
+      {/* {currentMarkerToPlace === "X" ? (
+        <div className="turn-indicator-div x-turn"></div>
+      ) : (
+        <div className="turn-indicator-div o-turn"></div>
+      )} */}
       <div
-        className={`turn-indicator-div ${
+        className={`turn-indicator-div x-turn ${
           currentMarkerToPlace === "X" ? "visible" : "hidden"
         }`}
-        style={{ left: "2rem" }}
-      >{`X's Turn`}</div>
-      {/* <div
-        className={`turn-indicator-div ${
-          currentMarkerToPlace === "O" ? "visible" : "hidden"
-        }`}
-        style={{
-          right: "2rem",
-          display: `${isInitialRender ? "none" : "unset"}`,
-        }}
-      >{`O's Turn`}</div> */}
+      ></div>
       <div
-        className={`turn-indicator-div ${oTurnIndicatorClsName}`}
-        style={{
-          right: "2rem",
-          display: `${isInitialRender ? "none" : "flex"}`,
-        }}
-      >{`O's Turn`}</div>
+        className={`turn-indicator-div o-turn ${oTurnIndicatorClsName}`}
+        style={{ display: `${isInitialRender ? "none" : null}` }}
+      ></div>
       <MainBoard
         currentMarkerToPlace={currentMarkerToPlace}
         setCurrentMarkerToPlace={setCurrentMarkerToPlace}
