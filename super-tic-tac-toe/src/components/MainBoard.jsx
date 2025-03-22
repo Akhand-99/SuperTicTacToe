@@ -34,10 +34,9 @@ export default function MainBoard({
       wonBy: newWonBy,
     };
     setMainBoardState(newMainBoardState);
-  }
-
-  if (mainBoardState.wonBy && mainBoardState.activeBoardNumber === -1) {
-    alert(`${mainBoardState.wonBy} wins!!!`);
+    if (newMainBoardState.wonBy) {
+      alert(`${newMainBoardState.wonBy} wins!!!`);
+    }
   }
 
   return (

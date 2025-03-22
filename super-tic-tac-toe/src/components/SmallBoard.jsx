@@ -43,6 +43,7 @@ export default function SmallBoard({
         handleSmallBoardVictory(number, newWonBy);
       }
 
+      // Logic to determine next active board
       setMainBoardState((prev) => {
         if (prev.wonBy) {
           return { ...prev, activeBoardNumber: -1 };
