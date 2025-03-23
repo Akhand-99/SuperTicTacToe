@@ -170,17 +170,20 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
     background: rgba(255, 196, 127, 0.3); as cell bg colors*/ 
 
 #player-x-avatar {
-    position: fixed;
-    top: 0;
-    left: 0; 
-    scale: 0.5;
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: 0;  */
+    /* scale: 0.5; */
+    height: 38px;
+    padding-left: 20px;
 }
 
 #player-o-avatar {
-    position: fixed;
-    top: 0;
-    right: 0; 
-    scale: 0.5;
+    /* position: fixed; */
+    /* top: 0; */
+    /* right: 0;  */
+    /* scale: 0.5; */
+    height: 38px;
 }
 
 .dim {
@@ -247,10 +250,10 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
   
   @keyframes glowO {
     from {
-      box-shadow: 0 0 5px 3px rgba(49, 142, 103, 0.8);
+      box-shadow: 0 0 10px 3px rgba(49, 142, 103, 0.8);
     }
     to {
-      box-shadow: 0 0 10px 5px rgba(49, 142, 103, 1);
+      box-shadow: 0 0 20px 7px rgba(49, 142, 103, 1);
     }
   }
 
