@@ -170,17 +170,20 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
     background: rgba(255, 196, 127, 0.3); as cell bg colors*/ 
 
 #player-x-avatar {
-    position: fixed;
-    top: 0;
-    left: 0; 
-    scale: 0.5;
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: 0;  */
+    /* scale: 0.5; */
+    height: 38px;
+    padding-left: 20px;
 }
 
 #player-o-avatar {
-    position: fixed;
-    top: 0;
-    right: 0; 
-    scale: 0.5;
+    /* position: fixed; */
+    /* top: 0; */
+    /* right: 0;  */
+    /* scale: 0.5; */
+    height: 38px;
 }
 
 .dim {
@@ -204,7 +207,7 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
 }
 
 .turn-indicator-div {
-    width: 15dvw;
+    /* width: 15dvw;
     height: 15dvw;
     color: white;
     background-color: #318E67;
@@ -213,13 +216,63 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
     border-radius: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    position: fixed;
+    top: 0;
+    width: 0.5rem;
+    height: 100vh;
+    transition: opacity 0.3s ease-in-out;
+    /* transition: background-color 0.5s ease, box-shadow 0.5s ease; */
 }
 
-.turn-indicator-div.visible {
+.x-turn {
+    left: 0;
+    background-color: #FFC47F;
+    box-shadow: 0 0 15px 5px rgba(255, 196, 127, 0.8);
+    /* animation: glowX 1.5s infinite alternate ease-in-out; */
+  }
+  
+  .o-turn {
+    right: 0;
+    background-color: #318E67;
+    box-shadow: 0 0 15px 5px rgba(49, 142, 103, 0.8);
+    /* animation: glowO 1s infinite alternate ease-in-out; */
+  }
+  
+  @keyframes glowX {
+    from {
+      box-shadow: 0 0 10px 3px rgba(255, 196, 127, 0.8);
+    }
+    to {
+      box-shadow: 0 0 20px 7px rgba(255, 196, 127, 1);
+    }
+  }
+  
+  @keyframes glowO {
+    from {
+      box-shadow: 0 0 10px 3px rgba(49, 142, 103, 0.8);
+    }
+    to {
+      box-shadow: 0 0 20px 7px rgba(49, 142, 103, 1);
+    }
+  }
+
+/* .turn-indicator-div.visible {
     animation: fadeIn 0.5s ease-in-out forwards, pulse 2s infinite ease-in-out;
 }
 
 .turn-indicator-div.hidden {
     animation: fadeOut 0.5s ease-in-out forwards;
+} */
+
+.turn-indicator-div.x-turn.visible {
+    animation: fadeIn 0.5s ease-in-out forwards, glowX 1.5s infinite alternate ease-in-out;
+}
+
+.turn-indicator-div.hidden {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+.turn-indicator-div.o-turn.visible {
+    animation: fadeIn 0.5s ease-in-out forwards, glowO 1.5s infinite alternate ease-in-out;
 }

@@ -36,6 +36,7 @@ export default function MainBoard({
     setMainBoardState(newMainBoardState);
     if (newMainBoardState.wonBy) {
       alert(`${newMainBoardState.wonBy} wins!!!`);
+      setCurrentMarkerToPlace(null);
     }
   }
 
