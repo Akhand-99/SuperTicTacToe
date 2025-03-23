@@ -7,10 +7,12 @@ import MainBoard from "./components/MainBoard";
 import X_Avatar from "./assets/X_Avatar.png";
 import O_Avatar from "./assets/O_Avatar.png";
 import Hamburger_White from "./assets/menu_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg";
+import HamburgerMenu from "./components/HamburgerMenu";
 
 function App() {
   const [currentMarkerToPlace, setCurrentMarkerToPlace] = useState("X");
   const [isInitialRender, setIsInitialRender] = useState(true);
+  const [isHamburgerMenuVisible, setIsHamburgerMenuVisible] = useState(false);
 
   useEffect(() => {
     if (isInitialRender) {
@@ -23,6 +25,10 @@ function App() {
   let oTurnIndicatorClsName = "";
   if (!isInitialRender) {
     oTurnIndicatorClsName = currentMarkerToPlace === "O" ? "visible" : "hidden";
+  }
+
+  function handleHamburgerClick() {
+    setIsHamburgerMenuVisible(!isHamburgerMenuVisible);
   }
 
   return (
@@ -49,7 +55,11 @@ function App() {
             id="player-o-avatar"
             className={currentMarkerToPlace === "O" ? "" : "dim"}
           ></img>
-          <img src={Hamburger_White} style={{ height: "36px" }}></img>
+          <img
+            src={Hamburger_White}
+            style={{ height: "36px" }}
+            onClick={handleHamburgerClick}
+          ></img>
         </div>
       </div>
       <div
@@ -61,6 +71,7 @@ function App() {
         className={`turn-indicator-div o-turn ${oTurnIndicatorClsName}`}
         style={{ display: `${isInitialRender ? "none" : "unset"}` }}
       ></div>
+      {isHamburgerMenuVisible ? <HamburgerMenu></HamburgerMenu> : null}
       <MainBoard
         currentMarkerToPlace={currentMarkerToPlace}
         setCurrentMarkerToPlace={setCurrentMarkerToPlace}
