@@ -28,15 +28,7 @@ function App() {
   return (
     <>
       {/* <h1>Super Tic-Tac-Toe</h1> */}
-      <div
-        className="topbar"
-        style={{
-          display: "flex",
-          position: "absolute",
-          width: "100vw",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className="avatar-hamburger-container">
         <img
           src={X_Avatar}
           alt="X-Avatar"

@@ -1,6 +1,5 @@
 body {
     background-color: black;
-    /* color: wheat; */
     margin: 0 auto;
 }
 
@@ -11,29 +10,18 @@ body {
     height: calc(100dvh - 18px);
     width: calc(100dvh - 18px);
     margin: 0 auto;
-    /* border: 2px solid white; */
     margin-top: 6px;
     min-height: 480px;
     min-width: 480px;
 }
 
-.main-grid-cell {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* border-color: wheat; */
-    /* border-color: #FFC47F; */
-}
-
 .border-right {
     border-right: solid;
-    /* border-color: #FFC47F; */
     border-color: #DF9ECD;
 }
 
 .border-bottom {
     border-bottom: solid;
-    /* border-color: #FFC47F; */
     border-color: #DF9ECD;
 }
 
@@ -60,8 +48,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border-color: wheat; */
-    /* border-color: #FFC47F; */
     border-color: #FF929F;
     /* rgba(255, 146, 159, 0.2) is the 20% opacity version of above color */
 }
@@ -109,35 +95,6 @@ body {
     color: #318E67;
 }
 
-/* 1. Classic Contrast
-X: Blue (#1E90FF or DodgerBlue)
-O: Red (#FF4500 or OrangeRed)
-These classic colors are vibrant and stand out against the dark background.
-2. Warm & Cool
-X: Cyan (#00FFFF)
-O: Orange (#FFA500)
-This pairing adds a balance of warm and cool tones while being bright against black.
-3. Elegant & Subtle
-X: Gold (#FFD700)
-O: Silver (#C0C0C0)
-These metallic-inspired colors complement the wheat gridlines for an elegant look.
-4. Neon Glow
-X: Lime Green (#32CD32)
-O: Magenta (#FF00FF)
-These neon-like colors pop on a black background, giving a modern or arcade-like feel.
-5. Monochrome Accent
-X: White (#FFFFFF)
-O: Light Gray (#D3D3D3)
-A minimalist and clean look that works well with your wheat gridlines.
-6. Earth Tones
-X: Sandy Brown (#F4A460)
-O: Cornflower Blue (#6495ED)
-These colors pair naturally with the wheat gridlines for a soft, cohesive palette.
-Final Tip: Hover States
-Add hover effects for even more interactivity:
-X hover color: Slightly darker or lighter version of the chosen X color.
-O hover color: Slightly darker or lighter version of the chosen O color. */
-
 .marker-X-overlay {
     color: #FFC47F;
 }
@@ -145,10 +102,6 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
 .marker-O-overlay {
     color: #318E67;
 }
-
-/* .transparent {
-    background-color: #318E67;
-} */
 
 .marker-X.transparent {
     color: rgba(255, 196, 127, 0.3)
@@ -158,10 +111,6 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
     color: rgba(49, 142, 103, 0.3);
 }
 
-/* .inactive-board {
-    opacity: 15%;
-} */
-
 .inactive {
     border-color: rgba(255, 146, 159, 0.2);
 }
@@ -170,19 +119,11 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
     background: rgba(255, 196, 127, 0.3); as cell bg colors*/ 
 
 #player-x-avatar {
-    /* position: fixed; */
-    /* top: 0; */
-    /* left: 0;  */
-    /* scale: 0.5; */
     height: 38px;
     padding-left: 20px;
 }
 
 #player-o-avatar {
-    /* position: fixed; */
-    /* top: 0; */
-    /* right: 0;  */
-    /* scale: 0.5; */
     height: 38px;
 }
 
@@ -195,11 +136,11 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
     to { opacity: 1; }
 }
   
-@keyframes pulse {
+/* @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
-}
+} */
 
 @keyframes fadeOut {
     0% { opacity: 1; }
@@ -207,36 +148,22 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
 }
 
 .turn-indicator-div {
-    /* width: 15dvw;
-    height: 15dvw;
-    color: white;
-    background-color: #318E67;
-    position: absolute;
-    top: 35dvh;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
     position: fixed;
     top: 0;
     width: 0.5rem;
     height: 100vh;
-    transition: opacity 0.3s ease-in-out;
-    /* transition: background-color 0.5s ease, box-shadow 0.5s ease; */
 }
 
 .x-turn {
     left: 0;
     background-color: #FFC47F;
     box-shadow: 0 0 15px 5px rgba(255, 196, 127, 0.8);
-    /* animation: glowX 1.5s infinite alternate ease-in-out; */
   }
   
   .o-turn {
     right: 0;
     background-color: #318E67;
     box-shadow: 0 0 15px 5px rgba(49, 142, 103, 0.8);
-    /* animation: glowO 1s infinite alternate ease-in-out; */
   }
   
   @keyframes glowX {
@@ -257,14 +184,6 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
     }
   }
 
-/* .turn-indicator-div.visible {
-    animation: fadeIn 0.5s ease-in-out forwards, pulse 2s infinite ease-in-out;
-}
-
-.turn-indicator-div.hidden {
-    animation: fadeOut 0.5s ease-in-out forwards;
-} */
-
 .turn-indicator-div.x-turn.visible {
     animation: fadeIn 0.5s ease-in-out forwards, glowX 1.5s infinite alternate ease-in-out;
 }
@@ -275,4 +194,11 @@ O hover color: Slightly darker or lighter version of the chosen O color. */
 
 .turn-indicator-div.o-turn.visible {
     animation: fadeIn 0.5s ease-in-out forwards, glowO 1.5s infinite alternate ease-in-out;
+}
+
+.avatar-hamburger-container {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    justify-content: space-between;
 }
