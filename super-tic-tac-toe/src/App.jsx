@@ -13,6 +13,11 @@ function App() {
   const [currentMarkerToPlace, setCurrentMarkerToPlace] = useState("X");
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [isHamburgerMenuVisible, setIsHamburgerMenuVisible] = useState(false);
+  // Let us consider adding a key state or resetcounter state here and pass it as key prop to
+  // MainBoard so that, we can reset whole game state by re-mounting it. But I also want to
+  // learn more on the imperative ref appraoch that allows each component to expose
+  // its own reset function to parent, allowing for more fine grained reset abilities.
+  // For eg I can reset a particular smallBoard alone, instead of whole game.
 
   useEffect(() => {
     if (isInitialRender) {
