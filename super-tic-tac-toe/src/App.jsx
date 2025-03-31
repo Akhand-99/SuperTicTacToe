@@ -16,7 +16,6 @@ function App() {
   const [resetCount, setResetCount] = useState(0);
   // Adding resetcount state here and passing it as key prop to
   // MainBoard so that, we can reset whole game state by re-mounting it.
-  // Also please reset the first 2 state vars of this component too.
 
   useEffect(() => {
     if (isInitialRender) {
@@ -79,6 +78,8 @@ function App() {
         <HamburgerMenu
           setResetCount={setResetCount}
           setIsHamburgerMenuVisible={setIsHamburgerMenuVisible}
+          setIsInitialRender={setIsInitialRender}
+          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
         ></HamburgerMenu>
       ) : null}
       <MainBoard
