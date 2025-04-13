@@ -7,7 +7,12 @@ function App() {
   const [currentMarkerToPlace, setCurrentMarkerToPlace] = useState("X");
   const [isInitialRender, setIsInitialRender] = useState(true);
   // Adding resetcount state here and passing it as key prop to
-  // MainBoard so that, we can reset whole game state by re-mounting it.... for now.
+  // MainBoard so that, we can reset whole game state by re-mounting it.... for now
+  // Check on custom hooks, and if we can use a useGameState hook to manage state. or we can defer that too, once multiplayer is
+  // implemented. Give it a thought next time you code.
+  //Storing state in local storage can be deferred, once multiplayer is implemented, because how the boardState is used and defined
+  // may change with multiplayer feature. Plus, FE was not the only learning objective too. High time we dive into multiplayer to
+  // explore BE concepts. We can come back to refining FE later.
   const [resetCount, setResetCount] = useState(0);
 
   useEffect(() => {
