@@ -119,6 +119,13 @@ function App() {
         : 0;
     }
 
+    let newCurrentMarkerToPlace;
+    if (newMainBoardWonBy) {
+      newCurrentMarkerToPlace = null;
+    } else {
+      newCurrentMarkerToPlace = currentMarkerToPlace === "X" ? "O" : "X";
+    }
+
     let newGameData = {
       ...gameData,
       mainBoardCellList: newMainBoardCellList,
@@ -126,13 +133,26 @@ function App() {
         if (smallBoardNumber - 1 === index) return newSmallBoardData;
         else return smallBoardData;
       }),
-      currentMarkerToPlace: currentMarkerToPlace === "X" ? "O" : "X",
+      // currentMarkerToPlace: currentMarkerToPlace === "X" ? "O" : "X",
+      currentMarkerToPlace: newCurrentMarkerToPlace,
       wonBy: newMainBoardWonBy,
       activeBoardNumber: newActiveBoardNumber,
     };
     console.log("newGameData: ", newGameData);
     setGameData(newGameData);
   }
+
+  useEffect(() => {
+    if (gameData.wonBy) {
+      if (gameData.wonBy === "X") {
+        alert("X wins!");
+      } else if (gameData.wonBy === "O") {
+        alert("O wins!");
+      } else {
+        alert("Game ended as a draw!");
+      }
+    }
+  }, [gameData.wonBy]);
 
   return (
     <>
