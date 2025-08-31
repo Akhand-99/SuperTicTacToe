@@ -6,9 +6,8 @@ import HamburgerMenu from "./HamburgerMenu";
 
 export default function AvatarHamburgerContainer({
   currentMarkerToPlace,
-  setResetCount,
   setIsInitialRender,
-  setCurrentMarkerToPlace,
+  setGameData,
 }) {
   const [isHamburgerMenuVisible, setIsHamburgerMenuVisible] = useState(false);
 
@@ -48,10 +47,9 @@ export default function AvatarHamburgerContainer({
       </div>
       {isHamburgerMenuVisible ? (
         <HamburgerMenu
-          setResetCount={setResetCount}
           setIsHamburgerMenuVisible={setIsHamburgerMenuVisible}
           setIsInitialRender={setIsInitialRender}
-          setCurrentMarkerToPlace={setCurrentMarkerToPlace}
+          setGameData={setGameData}
         ></HamburgerMenu>
       ) : null}
     </>

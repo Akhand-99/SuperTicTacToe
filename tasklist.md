@@ -6,26 +6,26 @@ This document outlines the incremental steps to integrate WebSocket-based online
 
 ### Task 1.1: Centralize Game State in `App.jsx`
 
-- [ ] **1.1.1:** In `super-tic-tac-toe/src/App.jsx`, add a new `useState` hook named `gameData`. Initialize it with a structure that can hold the entire game state, including `mainBoardState` (which will contain `boardCellList`, `wonBy`, `isFinished`, `activeBoardNumber`), `currentMarkerToPlace`, and potentially `playerXId`, `playerOId`, `localPlayerMarker`, and `gameStatus`.
-- [ ] **1.1.2:** Pass the `gameData` state as a prop to the `MainBoard` component in `super-tic-tac-toe/src/App.jsx`.
+- [x] **1.1.1:** Centralized `gameData` state in `App.jsx` with main board, small boards, current marker, and active board.
+- [x] **1.1.2:** Passed `gameData` as a prop to `MainBoard`.
 
 ### Task 1.2: Make `MainBoard.jsx` a Display Component
 
-- [ ] **1.2.1:** In `super-tic-tac-toe/src/components/MainBoard.jsx`, remove the `useState` hook for `mainBoardState`.
-- [ ] **1.2.2:** Update the `MainBoard` component to receive `mainBoardState` and `currentMarkerToPlace` as props from `App.jsx`.
-- [ ] **1.2.3:** Adjust the `isActive` prop calculation for each `SmallBoard` component within `MainBoard.jsx` to use the `mainBoardState` received via props.
-- [ ] **1.2.4:** Modify the `handleSmallBoardVictory` function in `super-tic-tac-toe/src/components/MainBoard.jsx` so it no longer directly updates `mainBoardState`. For now, you can leave the `alert` but understand its trigger will change later.
+- [x] **1.2.1:** Removed local state from `MainBoard.jsx`.
+- [x] **1.2.2:** Updated `MainBoard` to receive all state via props.
+- [x] **1.2.3:** Adjusted `isActive` prop calculation for each `SmallBoard`.
+- [x] **1.2.4:** Win/draw logic handled centrally; alerts present but to be improved.
 
 ### Task 1.3: Make `SmallBoard.jsx` a Display Component
 
-- [ ] **1.3.1:** In `super-tic-tac-toe/src/components/SmallBoard.jsx`, remove the `useState` hook for `boardState`.
-- [ ] **1.3.2:** Update the `SmallBoard` component to receive `boardCellList` and `wonBy` as props (these will come from the `mainBoardState` prop passed down from `MainBoard`).
-- [ ] **1.3.3:** Modify the `handleOnMarkerPlace` function in `super-tic-tac-toe/src/components/SmallBoard.jsx` so it no longer updates `boardState` or `setCurrentMarkerToPlace` locally. It will eventually send data to the server.
+- [x] **1.3.1:** Removed local state from `SmallBoard.jsx`.
+- [x] **1.3.2:** Updated `SmallBoard` to receive board data via props.
+- [x] **1.3.3:** Move logic delegated to central handler via `placeMarker`.
 
 ### Task 1.4: Adjust `SmallBoardCell.jsx` for Server Interaction Preparation
 
-- [ ] **1.4.1:** In `super-tic-tac-toe/src/components/SmallBoardCell.jsx`, ensure the `placeMarker` function does not directly modify any local state. It should prepare to call a function passed via props that will send the move to the server.
-- [ ] **1.4.2:** Verify that `onMarkerAboutToPlace` and `onMarkerAboutToPlaceReject` functions still work correctly based on `isActive` and `cellValue` props, as the actual `cellValue` will eventually be server-driven.
+- [x] **1.4.1:** `SmallBoardCell` does not modify local state; calls handler via props.
+- [x] **1.4.2:** Hover logic and cell display are correct; cell value is server-driven.
 
 ## Phase 2: WebSocket Connection and Basic Communication
 

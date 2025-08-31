@@ -38,6 +38,7 @@
             "wonBy": null
         }
     ],
+    "currentMarkerToPlace": "X",
     "wonBy": null, //"X" || "O" || "None" || null. If null, game is not finished.
     "activeBoardNumber": 0 // 0 means, marker can be placed on any board (For initial move and moves where the board to be played on is full, or already won)
 }
