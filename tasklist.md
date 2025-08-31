@@ -1,5 +1,14 @@
 # Online Multiplayer Implementation Tasks (WebSockets)
 
+## Major Frontend Tasks
+
+- [ ] Implement Home screen (main menu, navigation)
+- [ ] Implement Settings screen (game options, sound/music toggles, chaos mode toggles)
+- [ ] Add sound effects and background music (with mute/toggle options)
+- [ ] Add game animations (e.g., strikethrough for winning triplet, board transitions)
+- [ ] Create animated game message components (win/draw/turn notifications)
+- [ ] Display player game info/stats (e.g., wins, losses, streaks, current turn, marker)
+
 This document outlines the incremental steps to integrate WebSocket-based online multiplayer into the Super Tic-Tac-Toe game, using `useState` and `useContext` for state management.
 
 ## Phase 1: Prepare for Server-Driven Game State

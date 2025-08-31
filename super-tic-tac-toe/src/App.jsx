@@ -4,7 +4,10 @@ import MainBoard from "./components/MainBoard";
 import AvatarHamburgerContainer from "./components/AvatarHamburgerContainer";
 import checkWinAndReturnMarker from "./components/utils/checkWinAndReturnMarker";
 
+import HomeScreen from "./HomeScreen";
+
 function App() {
+  const [currentScreen, setCurrentScreen] = useState("home");
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [gameData, setGameData] = useState({
     mainBoardCellList: [null, null, null, null, null, null, null, null, null],
@@ -156,21 +159,32 @@ function App() {
 
   return (
     <>
-      <AvatarHamburgerContainer
-        currentMarkerToPlace={gameData.currentMarkerToPlace}
-        setIsInitialRender={setIsInitialRender}
-        setGameData={setGameData}
-      ></AvatarHamburgerContainer>
-      <div
-        className={`turn-indicator-div x-turn ${
-          gameData.currentMarkerToPlace === "X" ? "visible" : "hidden"
-        }`}
-      ></div>
-      <div
-        className={`turn-indicator-div o-turn ${oTurnIndicatorClsName}`}
-        style={{ display: `${isInitialRender ? "none" : "unset"}` }}
-      ></div>
-      <MainBoard gameData={gameData} placeMarker={placeMarker}></MainBoard>
+      {currentScreen === "home" && <HomeScreen onNavigate={setCurrentScreen} />}
+      {currentScreen === "game" && (
+        <>
+          <AvatarHamburgerContainer
+            currentMarkerToPlace={gameData.currentMarkerToPlace}
+            setIsInitialRender={setIsInitialRender}
+            setGameData={setGameData}
+          ></AvatarHamburgerContainer>
+          <div
+            className={`turn-indicator-div x-turn ${
+              gameData.currentMarkerToPlace === "X" ? "visible" : "hidden"
+            }`}
+          ></div>
+          <div
+            className={`turn-indicator-div o-turn ${oTurnIndicatorClsName}`}
+            style={{ display: `${isInitialRender ? "none" : "unset"}` }}
+          ></div>
+          <MainBoard gameData={gameData} placeMarker={placeMarker}></MainBoard>
+        </>
+      )}
+      {currentScreen === "settings" && (
+        <div className="settings-screen">
+          <h2>Settings (Coming Soon)</h2>
+          <button onClick={() => setCurrentScreen("home")}>Back to Home</button>
+        </div>
+      )}
     </>
   );
 }
