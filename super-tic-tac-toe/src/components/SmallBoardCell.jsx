@@ -4,21 +4,11 @@ import numberToCellBorderMap from "./utils/numberToCellBorderMap";
 export default function SmallBoardCell({
   number,
   cellValue,
-  onMarkerPlace,
   currentMarkerToPlace,
+  handleSmallBoardCellClick,
   isActive,
 }) {
   const cellRef = useRef(null);
-
-  function placeMarker() {
-    if (!cellValue) {
-      onMarkerPlace(number);
-    } else {
-      alert(
-        "Sorry, that cell is not empty. For now basic browser alert will be shown, later we can make this notification to user more appealing"
-      );
-    }
-  }
 
   function onMarkerAboutToPlace() {
     if (!cellRef.current.innerHTML && isActive) {
@@ -49,11 +39,18 @@ export default function SmallBoardCell({
           " marker-" +
           cellValue
         } ${!isActive ? "inactive" : ""}`}
-        onClick={placeMarker}
+        onClick={() => {
+          if (cellValue) {
+            alert(
+              "Sorry, that cell is not empty. For now basic browser alert will be shown, later we can make this notification to user more appealing"
+            );
+            return;
+          }
+          handleSmallBoardCellClick(number);
+        }}
         onMouseEnter={onMarkerAboutToPlace}
         onMouseLeave={onMarkerAboutToPlaceReject}
       >
-        {/* {`${cellValue ? cellValue : ""}`} */}
         {cellValue}
       </div>
     </>

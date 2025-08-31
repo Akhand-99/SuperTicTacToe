@@ -70,6 +70,7 @@ body {
     align-items: center;
     font-size: clamp(50px, 20vw, 200px); /* Scales with viewport */
     opacity: 70%;
+    pointer-events: none;
 }
 
 .marker-X {
