@@ -1,7 +1,6 @@
 import FloatingPopover from "./FloatingPopover";
 
 export default function HamburgerMenu({
-  // setResetCount,
   setIsHamburgerMenuVisible,
   setIsInitialRender,
   setGameData,

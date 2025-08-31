@@ -1,47 +1,6 @@
 import SmallBoard from "./SmallBoard";
-// import { useState } from "react";
-// import checkWinAndReturnMarker from "./utils/checkWinAndReturnMarker";
 
-export default function MainBoard({
-  // currentMarkerToPlace,
-  // setCurrentMarkerToPlace,
-  gameData,
-  placeMarker,
-}) {
-  // const [mainBoardState, setMainBoardState] = useState({
-  //   boardCellList: [null, null, null, null, null, null, null, null, null],
-  //   wonBy: null, //"X" || "O" || "None" || null. If null, game is not finished.
-  //   isFinished: false,
-  //   activeBoardNumber: 0, // 0 means, marker can be placed on any board (For initial move and moves where the board to be played on is full, or already won)
-  // });
-
-  // function handleSmallBoardVictory(smallBoardNumber, smallBoardWonBy) {
-  //   let newMainBoardCellList = [...mainBoardState.boardCellList];
-  //   newMainBoardCellList[smallBoardNumber - 1] = smallBoardWonBy;
-
-  //   let newWonBy = checkWinAndReturnMarker(
-  //     smallBoardNumber,
-  //     currentMarkerToPlace,
-  //     newMainBoardCellList
-  //   );
-
-  //   // Condition to check for a Draw
-  //   if (!newWonBy && !newMainBoardCellList.includes(null)) {
-  //     newWonBy = "None";
-  //   }
-
-  //   let newMainBoardState = {
-  //     ...mainBoardState,
-  //     boardCellList: newMainBoardCellList,
-  //     wonBy: newWonBy,
-  //   };
-  //   setMainBoardState(newMainBoardState);
-  //   if (newMainBoardState.wonBy) {
-  //     alert(`${newMainBoardState.wonBy} wins!!!`);
-  //     setCurrentMarkerToPlace(null);
-  //   }
-  // }
-
+export default function MainBoard({ gameData, placeMarker }) {
   return (
     <>
       <div className="main-grid-container">

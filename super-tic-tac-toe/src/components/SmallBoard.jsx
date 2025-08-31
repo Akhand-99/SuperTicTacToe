@@ -1,81 +1,13 @@
-// import { useState } from "react";
 import SmallBoardCell from "./SmallBoardCell";
 import numberToCellBorderMap from "./utils/numberToCellBorderMap";
-// import checkWinAndReturnMarker from "./utils/checkWinAndReturnMarker";
 
 export default function SmallBoard({
   number,
-  // currentMarkerToPlace,
-  // setCurrentMarkerToPlace,
-  // setMainBoardState,
-  // handleSmallBoardVictory,
   boardData,
   currentMarkerToPlace,
   placeMarker,
   isActive,
 }) {
-  // const [boardState, setBoardState] = useState({
-  //   boardCellList: [null, null, null, null, null, null, null, null, null],
-  //   wonBy: null, //"X" || "O" || "None" || null. If null, game is not finished.
-  // });
-
-  // function handleOnMarkerPlace(smallBoardCellNumber) {
-  //   if (isActive) {
-  //     let newBoardCellList = [...boardState.boardCellList];
-  //     newBoardCellList[smallBoardCellNumber - 1] = currentMarkerToPlace;
-  //     let newWonBy = checkWinAndReturnMarker(
-  //       smallBoardCellNumber,
-  //       currentMarkerToPlace,
-  //       newBoardCellList
-  //     );
-
-  //     // Condition to check for a Draw
-  //     if (!newWonBy && !newBoardCellList.includes(null)) {
-  //       newWonBy = "None";
-  //     }
-
-  //     let newBoardState = {
-  //       ...boardState,
-  //       boardCellList: newBoardCellList,
-  //       wonBy: newWonBy,
-  //     };
-  //     setBoardState(newBoardState);
-  //     setCurrentMarkerToPlace(currentMarkerToPlace === "X" ? "O" : "X");
-
-  //     if (newWonBy) {
-  //       handleSmallBoardVictory(number, newWonBy);
-  //     }
-
-  //     // Logic to determine next active board
-  //     setMainBoardState((prev) => {
-  //       if (prev.wonBy) {
-  //         return { ...prev, activeBoardNumber: -1 };
-  //       }
-  //       return {
-  //         ...prev,
-  //         activeBoardNumber: !prev.boardCellList[smallBoardCellNumber - 1]
-  //           ? smallBoardCellNumber
-  //           : 0,
-  //       };
-  //     });
-  //   } else if (boardState.wonBy) {
-  //     if (boardState.wonBy === "None") {
-  //       // I think this condition is never met because, if game is draw, there are no empty cells and the "This cell is not empty" alert will be triggered from SmallBoardCell component
-  //       alert(
-  //         `This game has already been finished (Draw). For now, this will be an alert later we can make this more appealing and also include better thought out UX elements.`
-  //       );
-  //     } else {
-  //       alert(
-  //         `This game has already been finished (Won by ${boardState.wonBy}). For now, this will be an alert later we can make this more appealing and also include better thought out UX elements.`
-  //       );
-  //     }
-  //   } else {
-  //     alert(
-  //       `This board is inactive, marker can be placed on the active (highlighted) board only`
-  //     );
-  //   }
-  // }
-
   function handleSmallBoardCellClick(smallBoardCellNumber) {
     console.log("About to call placeMarker() from SmallBoard");
     // Check if board is won or drawn
