@@ -68,7 +68,7 @@ function App() {
   function placeMarker(
     smallBoardNumber,
     smallBoardCellNumber,
-    currentMarkerToPlace
+    currentMarkerToPlace,
   ) {
     console.log("Inside placeMarker function");
     let newSmallBoardCellList =
@@ -77,7 +77,7 @@ function App() {
     let newSmallBoardWonBy = checkWinAndReturnMarker(
       smallBoardCellNumber,
       currentMarkerToPlace,
-      newSmallBoardCellList
+      newSmallBoardCellList,
     );
 
     // Condition to check for a Draw
@@ -95,13 +95,13 @@ function App() {
     let newMainBoardWonBy = gameData.wonBy;
     let newActiveBoardNumber = gameData.activeBoardNumber;
 
-    if (newSmallBoardWonBy) {
+    if (newSmallBoardWonBy && newSmallBoardWonBy !== "None") {
       console.log("Inside if newSmallBoardWonBy block");
       newMainBoardCellList[smallBoardNumber - 1] = currentMarkerToPlace;
       newMainBoardWonBy = checkWinAndReturnMarker(
         smallBoardNumber,
         currentMarkerToPlace,
-        newMainBoardCellList
+        newMainBoardCellList,
       );
 
       // Condition to check for a Draw
