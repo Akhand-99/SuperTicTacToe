@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./css/styles1.css";
 import HomeScreen from "./components/HomeScreen";
-import LocalMultiplayer from "./components/LocalMultiplayer";
+// import LocalMultiplayer from "./components/LocalMultiplayer";
+import MainGame from "./components/MainGame";
 
 function App() {
   const [mode, setMode] = useState("home"); // 'home' | 'local' | 'online' | 'computer'
@@ -46,7 +47,7 @@ function App() {
   // For 'local' (and prototype 'online'/'computer') render existing game UI
   return (
     <>
-      <LocalMultiplayer></LocalMultiplayer>
+      <MainGame gameMode={mode}></MainGame>
     </>
   );
 }

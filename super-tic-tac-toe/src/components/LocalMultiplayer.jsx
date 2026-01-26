@@ -3,52 +3,8 @@ import MainBoard from "./MainBoard";
 import AvatarHamburgerContainer from "./AvatarHamburgerContainer";
 import checkWinAndReturnMarker from "./utils/checkWinAndReturnMarker";
 
-export default function LocalMultiplayer() {
+export default function LocalMultiplayer({ gameData, setGameData }) {
   const [isInitialRender, setIsInitialRender] = useState(true);
-  const [gameData, setGameData] = useState({
-    mainBoardCellList: [null, null, null, null, null, null, null, null, null],
-    smallBoards: [
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-    ],
-    currentMarkerToPlace: "X",
-    wonBy: null, //"X" || "O" || "None" || null. If null, game is not finished.
-    activeBoardNumber: 0, // 0 means, marker can be placed on any board (For initial move and moves where the board to be played on is full, or already won)
-  });
 
   useEffect(() => {
     if (isInitialRender) {
