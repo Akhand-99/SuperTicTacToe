@@ -128,3 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Add ignore rule for any file that has .local in its name at any folder level
+**/*.local
