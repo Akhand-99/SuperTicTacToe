@@ -1,5 +1,8 @@
 // filepath: c:\Personal Projects\SuperTicTacToeJS\SuperTicTacToe\super-tic-tac-toe\src\components\SettingsPage.jsx
+import { useRef } from "react";
 export default function SettingsPage({ onBack }) {
+  const nameInputBox = useRef();
+  //   function handleSave() {}
   return (
     <div className="settings-page">
       <div className="settings-card">
@@ -13,19 +16,20 @@ export default function SettingsPage({ onBack }) {
         </div>
 
         <section className="settings-section">
-          <h3>Players</h3>
-          <p className="muted">
-            Set display names for players. (Functionality to be implemented.)
-          </p>
+          <h3>Player Details</h3>
           <div className="players-grid">
             <label className="label-column">
-              <span>Player X Name</span>
-              <input className="settings-input" placeholder="Player X" />
+              <span>Your Name</span>
+              <input
+                className="settings-input"
+                placeholder="Player X"
+                ref={nameInputBox}
+              />
             </label>
-            <label className="label-column">
+            {/* <label className="label-column">
               <span>Player O Name</span>
               <input className="settings-input" placeholder="Player O" />
-            </label>
+            </label> */}
           </div>
         </section>
 
@@ -45,7 +49,9 @@ export default function SettingsPage({ onBack }) {
 
         <div className="settings-actions">
           <button className="btn btn-secondary">Reset Defaults</button>
-          <button className="btn btn-primary">Save</button>
+          <button className="btn btn-primary" onClick={() => 1}>
+            Save
+          </button>
         </div>
       </div>
     </div>

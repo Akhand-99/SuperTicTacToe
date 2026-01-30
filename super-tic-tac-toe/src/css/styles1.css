@@ -44,6 +44,30 @@ body {
 .mode-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(255,146,159,0.08); }
 .mode-btn:active { transform: translateY(-1px) scale(0.995); box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
 
+/* Specific mode colors using primary gold (X) and green (O) plus pink accent */
+.btn-local {
+    background: linear-gradient(90deg, var(--gold), var(--pink-2));
+    color: #111;
+    border: none;
+}
+.btn-local:hover { box-shadow: 0 14px 34px rgba(255,196,127,0.14); transform: translateY(-5px); }
+
+.btn-online {
+    background: linear-gradient(90deg, var(--pink-2), rgba(223,158,205,0.92));
+    color: #111;
+    border: none;
+}
+.btn-online:hover { box-shadow: 0 14px 34px rgba(255,146,159,0.14); transform: translateY(-5px); }
+
+.btn-computer {
+    background: linear-gradient(90deg, var(--green), rgba(40,137,95,0.95));
+    color: #fff;
+    border: none;
+}
+.btn-computer:hover { box-shadow: 0 14px 34px rgba(49,142,103,0.12); transform: translateY(-5px); }
+
+.mode-btn:focus { outline: 3px solid rgba(255,196,127,0.12); outline-offset: 3px; }
+
 .home-note { opacity: 0.75; margin-top: 12px; color: rgba(240,240,240,0.85); }
 
 /* Settings page styles */

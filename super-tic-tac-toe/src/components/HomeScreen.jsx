@@ -15,13 +15,22 @@ export default function HomeScreen({ onSelect }) {
       <h1 className="home-title">Super Tic-Tac-Toe</h1>
       <p className="home-subtitle">Choose a game mode</p>
       <div className="mode-buttons">
-        <button className="mode-btn" onClick={() => onSelect("local")}>
+        <button
+          className="mode-btn btn-local"
+          onClick={() => onSelect("local")}
+        >
           Local Multiplayer
         </button>
-        <button className="mode-btn" onClick={() => onSelect("online")}>
+        <button
+          className="mode-btn btn-online"
+          onClick={() => onSelect("online")}
+        >
           Online Multiplayer
         </button>
-        <button className="mode-btn" onClick={() => onSelect("computer")}>
+        <button
+          className="mode-btn btn-computer"
+          onClick={() => onSelect("computer")}
+        >
           Vs Computer
         </button>
       </div>
