@@ -1,23 +1,33 @@
-// filepath: c:\Personal Projects\SuperTicTacToeJS\SuperTicTacToe\super-tic-tac-toe\src\components\HomeScreen.jsx
+import Settings_Icon from "../assets/settings_32dp_FFC47F_FILL0_wght400_GRAD0_opsz40.svg";
+
 export default function HomeScreen({ onSelect }) {
   return (
-    <div style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "100vh",
-      gap: "16px",
-      color: "white"
-    }}>
-      <h1 style={{ margin: 0, marginBottom: 8 }}>Super Tic-Tac-Toe</h1>
-      <p style={{ marginTop: 0, opacity: 0.9 }}>Choose a game mode</p>
-      <div style={{ display: "flex", gap: 12 }}>
-        <button onClick={() => onSelect("local")}>Local Multiplayer</button>
-        <button onClick={() => onSelect("online")}>Online Multiplayer</button>
-        <button onClick={() => onSelect("computer")}>Vs Computer</button>
+    <div className="home-screen" style={{ position: "relative" }}>
+      {/* Settings icon top right */}
+      <div className="settings-icon-wrap">
+        <img
+          src={Settings_Icon}
+          alt="Settings"
+          className="settings-icon"
+          onClick={() => onSelect("settings")}
+        />
       </div>
-      <small style={{ opacity: 0.7, marginTop: 12 }}>Quick prototype: local uses current game logic.</small>
+      <h1 className="home-title">Super Tic-Tac-Toe</h1>
+      <p className="home-subtitle">Choose a game mode</p>
+      <div className="mode-buttons">
+        <button className="mode-btn" onClick={() => onSelect("local")}>
+          Local Multiplayer
+        </button>
+        <button className="mode-btn" onClick={() => onSelect("online")}>
+          Online Multiplayer
+        </button>
+        <button className="mode-btn" onClick={() => onSelect("computer")}>
+          Vs Computer
+        </button>
+      </div>
+      <small className="home-note">
+        Quick prototype: local uses current game logic.
+      </small>
     </div>
   );
 }

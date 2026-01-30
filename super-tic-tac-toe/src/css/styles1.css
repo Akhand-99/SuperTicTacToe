@@ -3,6 +3,71 @@ body {
     margin: 0 auto;
 }
 
+/*AI Generated CSS for Home and Settings screens Start*/
+/* Home & Settings theming */
+:root {
+    --pink-1: #DF9ECD;
+    --pink-2: #FF929F;
+    --gold: #FFC47F;
+    --green: #318E67;
+    --light: #f0f0f0;
+}
+
+.home-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 16px;
+    color: var(--light);
+}
+
+.settings-icon-wrap { position: absolute; top: 24px; right: 32px; z-index: 2; }
+.settings-icon { height: 32px; width: 32px; cursor: pointer; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.6)); transition: transform 140ms ease, filter 140ms ease; }
+.settings-icon:hover { transform: rotate(8deg) scale(1.06); filter: drop-shadow(0 10px 20px rgba(255,146,159,0.12)); }
+
+.home-title { margin: 0; margin-bottom: 8px; font-size: 2.4rem; letter-spacing: 0.6px; color: var(--gold); text-shadow: 0 6px 20px rgba(255,196,127,0.06); }
+.home-subtitle { margin-top: 0; opacity: 0.95; color: rgba(240,240,240,0.9); }
+
+.mode-buttons { display: flex; gap: 12px; }
+.mode-btn {
+    background: linear-gradient(180deg, rgba(255,196,127,0.14), rgba(255,146,159,0.06));
+    border: 1px solid rgba(255,196,127,0.18);
+    color: var(--light);
+    padding: 10px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+.mode-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(255,146,159,0.08); }
+.mode-btn:active { transform: translateY(-1px) scale(0.995); box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
+
+.home-note { opacity: 0.75; margin-top: 12px; color: rgba(240,240,240,0.85); }
+
+/* Settings page styles */
+.settings-page { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding-top: 48px; color: var(--light); }
+.settings-card { width: 420px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25)); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,196,127,0.08); box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+.settings-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px }
+.settings-title { margin:0; color: var(--gold); }
+.muted { margin-top:0; margin-bottom:12px; opacity:0.9; color: rgba(240,240,240,0.8); }
+.players-grid { display:grid; gap:8px; }
+.label-column { display:flex; flex-direction:column; gap:6px; }
+.settings-input { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.04); padding: 8px 10px; border-radius:8px; color: var(--light); }
+.settings-input::placeholder { color: rgba(255,255,255,0.35); }
+.settings-section { margin-bottom:18px }
+.settings-grid { display:grid; gap:8px }
+.checkbox-row { display:flex; align-items:center; gap:8px }
+
+.settings-actions { display:flex; justify-content:flex-end; gap:8px }
+.btn { padding:8px 12px; border-radius:8px; cursor:pointer; border:1px solid transparent; font-weight:600 }
+.btn-primary { background: linear-gradient(90deg, var(--gold), var(--pink-2)); color: #111; border: none; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,196,127,0.12); }
+.btn-secondary { background: transparent; color: var(--light); border: 1px solid rgba(255,255,255,0.06); }
+.btn-secondary:hover { background: rgba(255,255,255,0.02); }
+/*AI Generated CSS for Home and Settings screens End*/
+
 .main-grid-container {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
