@@ -1,176 +1,54 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./css/styles1.css";
-import MainBoard from "./components/MainBoard";
-import AvatarHamburgerContainer from "./components/AvatarHamburgerContainer";
-import checkWinAndReturnMarker from "./components/utils/checkWinAndReturnMarker";
+import HomeScreen from "./components/HomeScreen";
+// import LocalMultiplayer from "./components/LocalMultiplayer";
+import MainGame from "./components/MainGame";
+import SettingsPage from "./components/SettingsPage";
 
 function App() {
-  const [isInitialRender, setIsInitialRender] = useState(true);
-  const [gameData, setGameData] = useState({
-    mainBoardCellList: [null, null, null, null, null, null, null, null, null],
-    smallBoards: [
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-      {
-        boardCellList: [null, null, null, null, null, null, null, null, null],
-        wonBy: null,
-      },
-    ],
-    currentMarkerToPlace: "X",
-    wonBy: null, //"X" || "O" || "None" || null. If null, game is not finished.
-    activeBoardNumber: 0, // 0 means, marker can be placed on any board (For initial move and moves where the board to be played on is full, or already won)
-  });
+  const [mode, setMode] = useState("home"); // 'home' | 'local' | 'online' | 'computer' | 'settings'
+  const [isLoadingMode, setIsLoadingMode] = useState(false);
 
-  useEffect(() => {
-    if (isInitialRender) {
-      if (gameData.currentMarkerToPlace === "O") {
-        setIsInitialRender(false);
-      }
-    }
-  }, [gameData, isInitialRender]);
-
-  let oTurnIndicatorClsName = "";
-  if (!isInitialRender) {
-    oTurnIndicatorClsName =
-      gameData.currentMarkerToPlace === "O" ? "visible" : "hidden";
+  function handleSelectMode(selectedMode) {
+    setIsLoadingMode(true);
+    // simulate a small loading delay for UX
+    setTimeout(() => {
+      setIsLoadingMode(false);
+      setMode(selectedMode);
+    }, 250);
   }
 
-  function placeMarker(
-    smallBoardNumber,
-    smallBoardCellNumber,
-    currentMarkerToPlace,
-  ) {
-    console.log("Inside placeMarker function");
-    let newSmallBoardCellList =
-      gameData.smallBoards[smallBoardNumber - 1].boardCellList;
-    newSmallBoardCellList[smallBoardCellNumber - 1] = currentMarkerToPlace;
-    let newSmallBoardWonBy = checkWinAndReturnMarker(
-      smallBoardCellNumber,
-      currentMarkerToPlace,
-      newSmallBoardCellList,
+  // show loading when switching into a mode for UX
+  if (isLoadingMode) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          height: "100vh",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "white",
+        }}
+      >
+        <div>Loading...</div>
+      </div>
     );
-
-    // Condition to check for a Draw
-    if (!newSmallBoardWonBy && !newSmallBoardCellList.includes(null)) {
-      newSmallBoardWonBy = "None";
-    }
-
-    let newSmallBoardData = {
-      boardCellList: newSmallBoardCellList,
-      wonBy: newSmallBoardWonBy,
-    };
-    console.log("newSmallBoardData: ", newSmallBoardData);
-
-    let newMainBoardCellList = gameData.mainBoardCellList;
-    let newMainBoardWonBy = gameData.wonBy;
-    let newActiveBoardNumber = gameData.activeBoardNumber;
-
-    if (newSmallBoardWonBy && newSmallBoardWonBy !== "None") {
-      console.log("Inside if newSmallBoardWonBy block");
-      newMainBoardCellList[smallBoardNumber - 1] = currentMarkerToPlace;
-      newMainBoardWonBy = checkWinAndReturnMarker(
-        smallBoardNumber,
-        currentMarkerToPlace,
-        newMainBoardCellList,
-      );
-
-      // Condition to check for a Draw
-      if (!newMainBoardWonBy && !newMainBoardCellList.includes(null)) {
-        newMainBoardWonBy = "None";
-      }
-    }
-
-    // Logic to determine next active board
-    if (newMainBoardWonBy) {
-      newActiveBoardNumber = -1;
-    } else {
-      newActiveBoardNumber = !newMainBoardCellList[smallBoardCellNumber - 1]
-        ? smallBoardCellNumber
-        : 0;
-    }
-
-    let newCurrentMarkerToPlace;
-    if (newMainBoardWonBy) {
-      newCurrentMarkerToPlace = null;
-    } else {
-      newCurrentMarkerToPlace = currentMarkerToPlace === "X" ? "O" : "X";
-    }
-
-    let newGameData = {
-      ...gameData,
-      mainBoardCellList: newMainBoardCellList,
-      smallBoards: gameData.smallBoards.map((smallBoardData, index) => {
-        if (smallBoardNumber - 1 === index) return newSmallBoardData;
-        else return smallBoardData;
-      }),
-      // currentMarkerToPlace: currentMarkerToPlace === "X" ? "O" : "X",
-      currentMarkerToPlace: newCurrentMarkerToPlace,
-      wonBy: newMainBoardWonBy,
-      activeBoardNumber: newActiveBoardNumber,
-    };
-    console.log("newGameData: ", newGameData);
-    setGameData(newGameData);
   }
 
-  useEffect(() => {
-    if (gameData.wonBy) {
-      if (gameData.wonBy === "X") {
-        alert("X wins!");
-      } else if (gameData.wonBy === "O") {
-        alert("O wins!");
-      } else {
-        alert("Game ended as a draw!");
-      }
-    }
-  }, [gameData.wonBy]);
+  // Home screen
+  if (mode === "home") {
+    return <HomeScreen onSelect={handleSelectMode} />;
+  }
 
+  if (mode === "settings") {
+    return (
+      <SettingsPage onBack={() => handleSelectMode("home")}></SettingsPage>
+    );
+  }
+  // For 'local' (and prototype 'online'/'computer') render existing game UI
   return (
     <>
-      <AvatarHamburgerContainer
-        currentMarkerToPlace={gameData.currentMarkerToPlace}
-        setIsInitialRender={setIsInitialRender}
-        setGameData={setGameData}
-      ></AvatarHamburgerContainer>
-      <div
-        className={`turn-indicator-div x-turn ${
-          gameData.currentMarkerToPlace === "X" ? "visible" : "hidden"
-        }`}
-      ></div>
-      <div
-        className={`turn-indicator-div o-turn ${oTurnIndicatorClsName}`}
-        style={{ display: `${isInitialRender ? "none" : "unset"}` }}
-      ></div>
-      <MainBoard gameData={gameData} placeMarker={placeMarker}></MainBoard>
+      <MainGame gameMode={mode}></MainGame>
     </>
   );
 }
