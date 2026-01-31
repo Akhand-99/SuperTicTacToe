@@ -1,8 +1,26 @@
 // filepath: c:\Personal Projects\SuperTicTacToeJS\SuperTicTacToe\super-tic-tac-toe\src\components\SettingsPage.jsx
 import { useRef } from "react";
-export default function SettingsPage({ onBack }) {
-  const nameInputBox = useRef();
-  //   function handleSave() {}
+import { v4 as uuidv4 } from "uuid";
+
+export default function SettingsPage({
+  onBack,
+  settingsInfo,
+  setSettingsInfo,
+}) {
+  const nameInputBox = useRef(null);
+  function handleSave() {
+    if (nameInputBox.current) {
+      let playerName = nameInputBox.current.value;
+      let playerID = uuidv4();
+      // let newSettingsInfo = { playerName: playerName, playerID: playerID };
+      setSettingsInfo({
+        ...settingsInfo,
+        playerName: playerName,
+        playerID: playerID,
+      });
+      alert("Saved!");
+    }
+  }
   return (
     <div className="settings-page">
       <div className="settings-card">
@@ -24,6 +42,7 @@ export default function SettingsPage({ onBack }) {
                 className="settings-input"
                 placeholder="Player X"
                 ref={nameInputBox}
+                defaultValue={settingsInfo?.playerName}
               />
             </label>
             {/* <label className="label-column">
@@ -49,7 +68,7 @@ export default function SettingsPage({ onBack }) {
 
         <div className="settings-actions">
           <button className="btn btn-secondary">Reset Defaults</button>
-          <button className="btn btn-primary" onClick={() => 1}>
+          <button className="btn btn-primary" onClick={handleSave}>
             Save
           </button>
         </div>

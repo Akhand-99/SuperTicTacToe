@@ -8,6 +8,7 @@ import SettingsPage from "./components/SettingsPage";
 function App() {
   const [mode, setMode] = useState("home"); // 'home' | 'local' | 'online' | 'computer' | 'settings'
   const [isLoadingMode, setIsLoadingMode] = useState(false);
+  const [settingsInfo, setSettingsInfo] = useState({}); // playerName and playerID js obj
 
   function handleSelectMode(selectedMode) {
     setIsLoadingMode(true);
@@ -42,7 +43,11 @@ function App() {
 
   if (mode === "settings") {
     return (
-      <SettingsPage onBack={() => handleSelectMode("home")}></SettingsPage>
+      <SettingsPage
+        onBack={() => handleSelectMode("home")}
+        settingsInfo={settingsInfo}
+        setSettingsInfo={setSettingsInfo}
+      ></SettingsPage>
     );
   }
   // For 'local' (and prototype 'online'/'computer') render existing game UI
