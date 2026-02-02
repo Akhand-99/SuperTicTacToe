@@ -72,6 +72,7 @@ body {
 
 /* Settings page styles */
 .settings-page { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding-top: 48px; color: var(--light); }
+.settings-row { display:flex; justify-content:center; padding: 12px 0; }
 .settings-card { width: 420px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25)); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,196,127,0.08); box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
 .settings-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px }
 .settings-title { margin:0; color: var(--gold); }

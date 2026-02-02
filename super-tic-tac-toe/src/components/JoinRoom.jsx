@@ -1,18 +1,18 @@
 // filepath: src/components/JoinRoom.jsx
-export default function JoinRoom({ onBack }) {
+export default function JoinRoom() {
   return (
-    <div className="settings-page">
+    <div className="settings-row">
       <div className="settings-card">
         <div className="settings-header">
           <h2 className="settings-title">Join Room</h2>
           <div>
-            <button
+            {/* <button
               className="btn btn-secondary"
               type="button"
               onClick={onBack}
             >
               Back
-            </button>
+            </button> */}
           </div>
         </div>
 
