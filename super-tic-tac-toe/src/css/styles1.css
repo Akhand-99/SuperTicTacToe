@@ -78,11 +78,17 @@ body {
 .muted { margin-top:0; margin-bottom:12px; opacity:0.9; color: rgba(240,240,240,0.8); }
 .players-grid { display:grid; gap:8px; }
 .label-column { display:flex; flex-direction:column; gap:6px; }
-.settings-input { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.04); padding: 8px 10px; border-radius:8px; color: var(--light); }
+.settings-input { background: #000; border: 1px solid rgba(255,255,255,0.06); padding: 8px 10px; border-radius:8px; color: var(--light); width:100%; box-sizing:border-box }
 .settings-input::placeholder { color: rgba(255,255,255,0.35); }
 .settings-section { margin-bottom:18px }
 .settings-grid { display:grid; gap:8px }
 .checkbox-row { display:flex; align-items:center; gap:8px }
+
+/* two-column helper used on CreateRoom and JoinRoom */
+.two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) {
+    .two-col-grid { grid-template-columns: 1fr; }
+}
 
 .settings-actions { display:flex; justify-content:flex-end; gap:8px }
 .btn { padding:8px 12px; border-radius:8px; cursor:pointer; border:1px solid transparent; font-weight:600 }

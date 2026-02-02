@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LocalMultiplayer from "./LocalMultiplayer";
+import OnlineMultiplayer from "./OnlineMultiplayer";
 
 export default function MainGame({ gameMode }) {
   const [gameData, setGameData] = useState({
@@ -54,6 +55,7 @@ export default function MainGame({ gameMode }) {
         setGameData={setGameData}
       ></LocalMultiplayer>
     ),
+    online: <OnlineMultiplayer></OnlineMultiplayer>,
   };
 
   return <>{gameModeViewObject[gameMode]}</>;
