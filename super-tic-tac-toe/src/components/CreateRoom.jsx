@@ -1,11 +1,19 @@
 import { useRef } from "react";
-export default function CreateRoom() {
+import axios from "axios";
+export default function CreateRoom({ setRoomID }) {
   const roomNameInputRef = useRef(null);
   const roomPasswordInputRef = useRef(null);
-  function handleCreateRoom() {
+  async function handleCreateRoomAndJoin() {
     if (roomNameInputRef.current && roomPasswordInputRef.current) {
       let roomName = roomNameInputRef.current.value;
       let roomPassword = roomPasswordInputRef.current.value;
+      const response = await axios.post("http://127.0.0.1:8000/room_creation", {
+        room_name: roomName,
+        room_password: roomPassword,
+      });
+      console.log(response.data);
+      console.log(response.data.room_id);
+      setRoomID(response.data.room_id);
     }
   }
   return (
@@ -49,7 +57,11 @@ export default function CreateRoom() {
         </section>
 
         <div className="settings-actions">
-          <button className="btn btn-primary" type="button">
+          <button
+            className="btn btn-primary"
+            type="button"
+            onClick={handleCreateRoomAndJoin}
+          >
             Create Room
           </button>
         </div>

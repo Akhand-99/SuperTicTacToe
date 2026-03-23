@@ -1,7 +1,9 @@
+import { useState } from "react";
 import CreateRoom from "./CreateRoom";
 import JoinRoom from "./JoinRoom";
 
 export default function OnlineMultiplayer({ onBack }) {
+  const [roomID, setRoomID] = useState("");
   return (
     <div className="online-multiplayer">
       <div
@@ -36,7 +38,7 @@ export default function OnlineMultiplayer({ onBack }) {
           margin: "0 auto",
         }}
       >
-        <CreateRoom />
+        <CreateRoom setRoomID={setRoomID} />
         <JoinRoom />
       </div>
     </div>
